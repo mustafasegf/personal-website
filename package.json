@@ -10,9 +10,13 @@
   },
   "devDependencies": {
     "@astrojs/react": "^0.4.2",
+    "@astrojs/tailwind": "^0.2.5",
     "@types/react": "^18.0.10",
     "@types/react-dom": "^18.0.5",
-    "astro": "^1.0.0-beta.73"
+    "astro": "^1.0.0-beta.73",
+    "autoprefixer": "^10.4.7",
+    "daisyui": "^2.20.0",
+    "postcss": "^8.4.14"
   },
   "dependencies": {
     "react": "^18.1.0",
