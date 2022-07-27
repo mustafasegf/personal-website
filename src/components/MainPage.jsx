@@ -1,14 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-export default function Counter() {
+export default function MainPage() {
 
   return (
     <>
-      <p className="text-justify">
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec convallis varius tincidunt. Etiam id ipsum a nunc tincidunt volutpat lacinia sit amet velit. Nullam euismod arcu eu lobortis blandit. Pellentesque quis dui tincidunt, imperdiet enim a, pellentesque sapien. Fusce dapibus molestie ultrices. Pellentesque tempus viverra facilisis. Praesent tincidunt, lacus vitae feugiat eleifend, neque quam varius ipsum, lobortis tempus erat velit eu massa. Duis eu felis id ligula lacinia ornare eu vitae felis.
+      <div id="hero" className="mb-32">
+        <p className="text-info lg:text-xl mb-8">Hi, my name is</p>
+        <p className="text-info text-2xl sm:text-4xl lg:text-6xl font-semibold mb-4">Mustafa Zaki Assagaf</p>
+        <p className="text-neutral-content text-2xl sm:text-4xl lg:text-6xl font-semibold mb-8">I build web technologies</p>
+        <p className="mb-12 text-justify md:w-[60%]">
+          I'm a backend engineer that also learn cloud and infrastructure. Right now, I'm a student at
+          Faculty of Computer Science of the University of Indonesia. I'm proficient in golang and
+          backend technologies.
+        </p>
+        <a className="btn btn-primary">Contact me</a>
+      </div>
 
-Nulla tincidunt sed dolor vel vulputate. Pellentesque eu pulvinar magna. In vulputate scelerisque fermentum. Quisque tincidunt sodales felis eget sagittis. Nullam pulvinar risus vitae magna tincidunt, et finibus nisl egestas. Praesent quis sapien nulla. Proin mattis augue vitae nisl interdum accumsan. Donec interdum a orci ac fermentum. Maecenas ornare augue vitae mi aliquet placerat. Morbi porttitor est eu consectetur posuere. Etiam id ex odio. Curabitur non eleifend leo, sit amet faucibus ipsum. Nullam faucibus diam vitae interdum consequat. Maecenas finibus condimentum accumsan. Vestibulum viverra sit amet erat id maximus. Nunc dignissim ligula faucibus dolor pellentesque, eu commodo elit pellentesque.
-      </p>
+      <div id="about">
+        <p className="text-info lg:text-xl mb-8">About Me</p>
+      </div>
     </>
   );
 }
