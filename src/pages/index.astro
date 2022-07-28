@@ -1,7 +1,55 @@
 ---
-import MainPage from "../components/MainPage";
+import { Accent, AnimatedText } from "../components/Index";
 import Layout from "../layout/Layout.astro";
+
+
+const texts = [
+  "reliable",
+  "fast",
+  "secure",
+]
 ---
 <Layout>
-  <MainPage client:load />
+  <div id="hero" class="mb-32">
+    <p class="text-neutral-content text-sm lg:text-md mb-2">Hi, my name is</p>
+    <h3 class="text-info text-md sm:text-xl lg:text-4xl mb-6">Mustafa Zaki Assagaf</h3>
+    <h1 class="text-primary-content text-4xl sm:text-5xl lg:text-6xl font-semibold mb-8">
+      I build <br />
+      <AnimatedText client:load words={texts} /> <br />
+      web technologies
+    </h1>
+    <p class="mb-12 font-light text-accent-content md:w-[60%]">
+      I'm a <Accent>Backend Engineer</Accent>, <Accent>Cloud Engineer</Accent> and <Accent>System Engineer
+      </Accent> who use <Accent>Golang</Accent>, <Accent>Rust</Accent> and <Accent>TypeScript</Accent>
+
+    </p>
+    <a class="btn btn-primary md:text-lg mr-4"> Checkout My Work! </a>
+    <a class="btn btn-info btn-outline text-sm md:text-md  text-md">Learn More About Me!</a>
+
+  </div>
+
+
+  <div id="about">
+    <h3 class="text-info lg:text-2xl mb-8">About Me</h3>
+    <div class="flex flex-col space-y-4 text-primary-content">
+      <div class="flex flex-wrap gap-x-4 text-justify">
+        <p class="mb-4 lg:basis-5/12">
+          Hi there! My name is Mustafa and I love to do web development. I mostly do backend engineering, but i also can
+          do frontend engineering as well. Other than that, i also deal with cloud engineering using GCP and AWS. I've
+          also played with system engineering projects.
+        </p>
+        <p class="mb-4 lg:basis-5/12">
+          Right now I'm <Accent>actively looking for a job</Accent> and can do remote fulltime, or partime job.
+          <br />
+          <br />
+          Checkout my latest project, <a class="link text-info" href="" >Neoman</a>!  <br />
+          Postman like aplication on the terminal
+        </p>
+      </div>
+    </div>
+
+  </div>
+
 </Layout>
+<span />
+<span />

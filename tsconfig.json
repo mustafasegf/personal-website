@@ -12,6 +12,14 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "react",
+    "resolve": {
+      "extensions": [
+        ".js",
+        ".jsx",
+        ".ts",
+        ".tsx"
+      ]
+    },
     "types": [
       "astro/client"
     ]
