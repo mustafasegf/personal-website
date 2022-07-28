@@ -17,7 +17,7 @@ const showcase = [
     desc: "URL Shortner is a simple URL shortener that allows you to shorten any URL and get the original URL back.",
     tags: ["Go", "Redis", "Postgres"],
     href: "https://mustafasegf.com/s",
-    github: "https://github.com/mustafsegf/url-shortener"
+    github: "https://github.com/mustafasegf/go-shortener"
   },
   {
     title: "Anonymous Chat",
@@ -26,7 +26,7 @@ const showcase = [
     desc: "Anonymous Chat is a simple chat application that allows you to chat anonymously with a room you create.",
     tags: ["Go", "Kafka", "Docker"],
     href: "https://mustafasegf.com/chat",
-    github: "https://github.com/mustafsegf/chat"
+    github: "https://github.com/mustafasegf/chat"
   },
   {
     title: "Neoman",
@@ -35,15 +35,12 @@ const showcase = [
     desc: "Neoman is a postman like terminal application that allows you to send and receive HTTP requests and responses.",
     tags: ["Go", "Terminal", "Bubbletea"],
     href: "https://mustafasegf.com/neoman",
-    github: "https://github.com/mustafsegf/neoman"
+    github: "https://github.com/mustafasegf/neoman"
   }
 ]
 
 const projects = [
-  "chat",
   "hompimpa",
-  "url shortener",
-  "neoman",
   "sso proxy",
   "notionapi",
   "ks-yaml",
@@ -55,56 +52,64 @@ const projects = [
 ]
 ---
 <Layout>
-  <div id="hero" class="mb-32">
+  <div id="hero" class="mb-16">
     <p class="text-neutral-content text-sm lg:text-md mb-2">Hi, my name is</p>
     <h3 class="text-info text-md sm:text-xl lg:text-4xl mb-6">Mustafa Zaki Assagaf</h3>
-    <h1 class="text-primary-content text-5xl lg:text-6xl font-semibold mb-8">
+    <h1 class="text-5xl lg:text-6xl font-semibold mb-8">
       I build <br />
       <AnimatedText client:load words={texts} /> <br />
       web technologies
     </h1>
-    <p class="mb-12 font-light text-accent-content md:w-[60%]">
+    <p class="mb-12 font-light md:w-[60%]">
       I'm a <Accent>Backend Engineer</Accent>, <Accent>Cloud Engineer</Accent> and <Accent>System Engineer
       </Accent> who use <Accent>Golang</Accent>, <Accent>Rust</Accent> and <Accent>TypeScript</Accent>
     </p>
     <div class="flex flex-col sm:flex-row gap-2">
-      <a class="btn btn-primary btn-block sm:btn-wide mr-4"> Checkout My Work! </a>
+      <a class="btn btn-primary text-primary-content btn-block sm:btn-wide mr-4"> Checkout My Work! </a>
       <a class="btn btn-info btn-outline btn-block sm:btn-wide text-sm">Learn More About Me!</a>
     </div>
 
   </div>
 
-  <div id="project">
-    <h3 class="text-info text-2xl mb-8">Some Stuff That I've Built</h3>
-    <div class="flex flex-wrap lg:justify-center">
-      {showcase.map(({ title, img, alt, desc, tags, href, github }) => (
-      <Cards className="my-4 lg:mx-4" title={title} img={img} alt={alt} desc={desc} tags={tags} href={href}
-        github={github} />
-      ))}
+  <div id="showcase" class="mb-16">
+    <h3 class="text-2xl font-semibold mb-8">Some Stuff That I've Built</h3>
+    <div class="container">
+      <div class="flex flex-wrap lg:justify-center">
+        {showcase.map(({ title, img, alt, desc, tags, href, github }) => (
+        <Cards title={title} img={img} alt={alt} desc={desc} tags={tags} href={href} github={github} />
+        ))}
+      </div>
     </div>
   </div>
 
-  <div id="about">
-    <h3 class="text-info lg:text-2xl mb-8">About Me</h3>
-    <div class="flex flex-col space-y-4 text-primary-content">
-      <div class="flex flex-wrap gap-x-4 text-justify">
-        <p class="mb-4 lg:basis-5/12">
-          Hi there! My name is Mustafa and I love to do web development. I mostly do backend engineering, but i also can
+  <div id="about" class="mb-16">
+    <h3 class="text-2xl font-semibold mb-4">About Me</h3>
+    <div class="flex flex-col space-y-4">
+      <div class="">
+        <p class="mb-4 mt-4">
+          <span class="font-semibold">Hi there! </span> <br /> My name is Mustafa and I love to do web development. I
+          mostly do backend engineering, but i also can
           do frontend engineering as well. Other than that, i also deal with cloud engineering using GCP and AWS. I've
           also played with system engineering projects.
         </p>
-        <p class="mb-4 lg:basis-5/12">
-          Right now I'm <Accent>actively looking for a job</Accent> and can do remote fulltime, or partime job.
+        <p class="mb-4">
+          Right now I'm <span class="text-secondary">actively looking for a job</span> and can do remote fulltime, or
+          partime job.
           <br />
-          <br />
-          Checkout my latest project, <a class="link text-info" href="">Neoman</a>! <br />
-          Postman like aplication on the terminal
+          You can also checkout my latest project, <a class="link text-info" href="">Neoman</a>!
+          Postman like aplication on the terminal.
+        </p>
+        <p>
+          Here are some of the technologies that I use:
         </p>
       </div>
     </div>
 
+    <footer>
+
+    </footer>
   </div>
 
 </Layout>
 <span />
-<span /><span /><span /><span />
+<span /><span /><span /><span /><span /><span /><span /><span />

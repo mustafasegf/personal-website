@@ -1,11 +1,10 @@
-import * as React from 'react';
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-
+import * as React from "react";
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 export const Accent: React.FC<{ children: string }> = ({ children }) => (
-  <span className="text-lg text-accent whitespace-nowrap"> {children}</span>
-)
+  <span className="text-lg text-secondary whitespace-nowrap"> {children}</span>
+);
 
 export const AnimatedText: React.FC<{ words: string[] }> = ({ words }) => {
   const [index, setIndex] = useState(0);
@@ -46,25 +45,20 @@ export const AnimatedText: React.FC<{ words: string[] }> = ({ words }) => {
   };
 
   return (
-
     <motion.span
       initial="hidden"
       animate="visible"
-      className="text-accent"
+      className="text-secondary"
       variants={sentence}
       key={words[index]}
     >
-      {
-        words[index].split('').map((char, i) => {
-          return (
-            <motion.span key={words[index] + '-' + i} variants={letter}>
-              {char}
-            </motion.span>
-          );
-        })
-      }
+      {words[index].split("").map((char, i) => {
+        return (
+          <motion.span key={words[index] + "-" + i} variants={letter}>
+            {char}
+          </motion.span>
+        );
+      })}
     </motion.span>
-  )
-}
-
-
+  );
+};
