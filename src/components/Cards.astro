@@ -1,0 +1,36 @@
+---
+import { Picture } from '@astrojs/image/components';
+
+export interface Props {
+  title: string
+  img: string
+  alt: string
+  desc: string
+  tags: string[]
+  href: string
+  github: string
+  className?: string
+}
+
+const { title, img, alt, desc, tags, href, github, className } = Astro.props as Props
+---
+<div class={className}>
+  <div class="card lg:w-96 bg-base-200 shadow-xl">
+    <figure class="">
+      <Picture alt={alt} src={import(img)} alt={alt} aspectRatio={"16:9"}  widths={[200, 500, 800]} sizes="(max-width: 800px) 100vw, 800px" />
+    </figure>
+    <div class="card-body">
+      <h2 class="card-title">{title}</h2>
+      <p>{desc}</p>
+      <div class="card-actions mb-4 justify-end">
+        {tags.map((tag) => (
+        <div class="badge badge-outline">{tag}</div>
+        ))}
+      </div>
+      <div class="card-actions">
+        <a href={href} class="btn btn-primary grow">Open ↗</a>
+        <a href={github} class="btn btn-accent btn-outline basis-1/2">Github </a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,19 +1,64 @@
 ---
 import { Accent, AnimatedText } from "../components/Index";
+import Cards from "../components/Cards.astro";
 import Layout from "../layout/Layout.astro";
-
 
 const texts = [
   "reliable",
   "fast",
   "secure",
 ]
+
+const showcase = [
+  {
+    title: "URL Shortener",
+    img: "../assets/tech1.jpeg",
+    alt: "URL",
+    desc: "URL Shortner is a simple URL shortener that allows you to shorten any URL and get the original URL back.",
+    tags: ["Go", "Redis", "Postgres"],
+    href: "https://mustafasegf.com/s",
+    github: "https://github.com/mustafsegf/url-shortener"
+  },
+  {
+    title: "Anonymous Chat",
+    img: "../assets/tech2.jpeg",
+    alt: "Chat",
+    desc: "Anonymous Chat is a simple chat application that allows you to chat anonymously with a room you create.",
+    tags: ["Go", "Kafka", "Docker"],
+    href: "https://mustafasegf.com/chat",
+    github: "https://github.com/mustafsegf/chat"
+  },
+  {
+    title: "Neoman",
+    img: "../assets/tech3.jpeg",
+    alt: "Terminal",
+    desc: "Neoman is a postman like terminal application that allows you to send and receive HTTP requests and responses.",
+    tags: ["Go", "Terminal", "Bubbletea"],
+    href: "https://mustafasegf.com/neoman",
+    github: "https://github.com/mustafsegf/neoman"
+  }
+]
+
+const projects = [
+  "chat",
+  "hompimpa",
+  "url shortener",
+  "neoman",
+  "sso proxy",
+  "notionapi",
+  "ks-yaml",
+  "leetbot",
+  "extract kurikulum",
+  "notion notes",
+  "scelefeed",
+  "sceletui",
+]
 ---
 <Layout>
   <div id="hero" class="mb-32">
     <p class="text-neutral-content text-sm lg:text-md mb-2">Hi, my name is</p>
     <h3 class="text-info text-md sm:text-xl lg:text-4xl mb-6">Mustafa Zaki Assagaf</h3>
-    <h1 class="text-primary-content text-4xl sm:text-5xl lg:text-6xl font-semibold mb-8">
+    <h1 class="text-primary-content text-5xl lg:text-6xl font-semibold mb-8">
       I build <br />
       <AnimatedText client:load words={texts} /> <br />
       web technologies
@@ -21,13 +66,23 @@ const texts = [
     <p class="mb-12 font-light text-accent-content md:w-[60%]">
       I'm a <Accent>Backend Engineer</Accent>, <Accent>Cloud Engineer</Accent> and <Accent>System Engineer
       </Accent> who use <Accent>Golang</Accent>, <Accent>Rust</Accent> and <Accent>TypeScript</Accent>
-
     </p>
-    <a class="btn btn-primary md:text-lg mr-4"> Checkout My Work! </a>
-    <a class="btn btn-info btn-outline text-sm md:text-md  text-md">Learn More About Me!</a>
+    <div class="flex flex-col sm:flex-row gap-2">
+      <a class="btn btn-primary btn-block sm:btn-wide mr-4"> Checkout My Work! </a>
+      <a class="btn btn-info btn-outline btn-block sm:btn-wide text-sm">Learn More About Me!</a>
+    </div>
 
   </div>
 
+  <div id="project">
+    <h3 class="text-info text-2xl mb-8">Some Stuff That I've Built</h3>
+    <div class="flex flex-wrap lg:justify-center">
+      {showcase.map(({ title, img, alt, desc, tags, href, github }) => (
+      <Cards className="my-4 lg:mx-4" title={title} img={img} alt={alt} desc={desc} tags={tags} href={href}
+        github={github} />
+      ))}
+    </div>
+  </div>
 
   <div id="about">
     <h3 class="text-info lg:text-2xl mb-8">About Me</h3>
@@ -42,7 +97,7 @@ const texts = [
           Right now I'm <Accent>actively looking for a job</Accent> and can do remote fulltime, or partime job.
           <br />
           <br />
-          Checkout my latest project, <a class="link text-info" href="" >Neoman</a>!  <br />
+          Checkout my latest project, <a class="link text-info" href="">Neoman</a>! <br />
           Postman like aplication on the terminal
         </p>
       </div>
@@ -52,4 +107,4 @@ const texts = [
 
 </Layout>
 <span />
-<span />
+<span /><span /><span /><span />

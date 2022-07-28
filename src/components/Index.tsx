@@ -66,3 +66,5 @@ export const AnimatedText: React.FC<{ words: string[] }> = ({ words }) => {
     </motion.span>
   )
 }
+
+
