@@ -50,6 +50,24 @@ const projects = [
   "scelefeed",
   "sceletui",
 ]
+
+
+const skills = [
+  'Golang',
+  'Rust',
+  'Typescript',
+  'SQL (Postgres)',
+
+  'Redis',
+  'RabbitMQ',
+  'Kafka',
+  'Elastic Search',
+
+  'Docker',
+  'Kubernetes (K8s)',
+  'AWS',
+  'GCP',
+];
 ---
 <Layout>
   <div id="hero" class="mb-16">
@@ -99,9 +117,12 @@ const projects = [
           You can also checkout my latest project, <a class="link text-info" href="">Neoman</a>!
           Postman like aplication on the terminal.
         </p>
-        <p>
-          Here are some of the technologies that I use:
-        </p>
+        <p class="mb-4">Here are some of the technologies that I use:</p>
+        <ul class="columns-2 md:columns-3 lg:columns-4 list-disc list-inside">
+          {skills.map(skill => (
+            <li class="text-secondary">{skill}</li>
+          ))}
+        </ul>
       </div>
     </div>
 
@@ -112,4 +133,4 @@ const projects = [
 
 </Layout>
 <span />
-<span /><span /><span /><span /><span /><span /><span /><span />
+<span />
