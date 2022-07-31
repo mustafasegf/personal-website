@@ -16,7 +16,7 @@ jobs: {
           username: "${{ secrets.USERNAME }}",
           password: "${{ secrets.PASSWORD }}",
           port: "${{ secrets.PORT }}",
-          script: "cd project/personal-website && ~/.local/share/asdf/shims/pnpm build"
+          script: "whoami && pwd && cd project/personal-website && ~/.local/share/asdf/shims/pnpm build"
         }
       }
     ]
