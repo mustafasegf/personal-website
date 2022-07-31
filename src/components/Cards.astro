@@ -1,6 +1,5 @@
 ---
 import { Icon } from 'astro-icon'
-import { Picture } from '@astrojs/image/components';
 
 export interface Props {
   title: string
@@ -14,11 +13,9 @@ export interface Props {
 
 const { title, img, alt, desc, tags, href, github  } = Astro.props as Props
 ---
-
-<div class="card mb-4 lg:mr-4 w-full lg:w-[calc(50%-1rem)] bg-base-200 shadow-xl">
+<div class="card mb-4 lg:mr-4 w-full lg:w-[calc(33.3%-1rem)] bg-base-200 shadow-xl">
   <figure class="">
-    <Picture alt={alt} src={import(img)} alt={alt} aspectRatio={"16:9"} widths={[200, 500, 800]}
-      sizes="(max-width: 800px) 100vw, 800px" />
+    <img alt={alt} src={img} alt={alt} />
   </figure>
   <div class="card-body">
     <h2 class="card-title">{title}</h2>
