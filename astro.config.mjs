@@ -7,5 +7,10 @@ import image from "@astrojs/image";
 // https://astro.build/config
 export default defineConfig({
   // Enable React to support React JSX components.
-  integrations: [react(), tailwind(), image()]
+  integrations: [react(), tailwind(), image()],
+  vite: {
+    ssr: {
+      external: ["svgo"]
+    }
+  }
 });

@@ -1,0 +1,30 @@
+---
+import { Icon } from 'astro-icon'
+
+export interface Props {
+  title: string
+  desc: string
+  tags: string[]
+  href: string
+  github: string
+}
+
+const { title, desc, tags = [], href, github } = Astro.props as Props
+---
+<div class="card mb-4 lg:mr-4 w-full lg:w-[calc(33.3%-1rem)] bg-base-200 shadow-xl">
+  <div class="card-body">
+    <h2 class="card-title">{title}</h2>
+    <p>{desc}</p>
+    <div class="card-actions items-center justify-end">
+      <div class="flex justify-end gap-4">
+        {github && <Icon size={30} class="hover:text-info" name="iconoir:github" />}
+        {href && <Icon size={30} class="hover:text-info" name="akar-icons:link-out" />}
+      </div>
+      <div class="card-actions mr-0 ml-auto gap-2">
+        {tags.map((tag) => (
+        <div class=" text-neutral-content hover:text-secondary badge badge-outline">{tag}</div>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>

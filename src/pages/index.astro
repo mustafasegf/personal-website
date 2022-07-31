@@ -1,6 +1,7 @@
 ---
 import { Accent, AnimatedText } from "../components/Index";
 import Cards from "../components/Cards.astro";
+import SmallCards from "../components/SmallCard.astro";
 import Layout from "../layout/Layout.astro";
 
 const texts = [
@@ -24,7 +25,7 @@ const showcase = [
     img: "../assets/tech2.jpeg",
     alt: "Chat",
     desc: "Anonymous Chat is a simple chat application that allows you to chat anonymously with a room you create.",
-    tags: ["Go", "Kafka", "Docker"],
+    tags: ["Go", "Kafka", "Docker", "Websocket"],
     href: "https://mustafasegf.com/chat",
     github: "https://github.com/mustafasegf/chat"
   },
@@ -40,15 +41,69 @@ const showcase = [
 ]
 
 const projects = [
-  "hompimpa",
-  "sso proxy",
-  "notionapi",
-  "ks-yaml",
-  "leetbot",
-  "extract kurikulum",
-  "notion notes",
-  "scelefeed",
-  "sceletui",
+  {
+    title: "hompimpa",
+    desc: "Simple real time Indonesian traditional game using redis and websocket",
+    tags: ["Go", "Redis", "Websocket"],
+    href: "mustafasegf.com/hompimpa",
+    github: "https://github.com/mustafasegf/hompimpa"
+  },
+  {
+    title: "sso proxy",
+    desc: "SSO to Rest API proxy using golang and colly scraper",
+    tags: ["Go", "Colly"],
+    href: "",
+    github: "https://github.com/ristekoss/sso-proxy"
+  },
+  {
+    title: "notionapi",
+    desc: "Contributed to Notion Library using Go",
+    tags: ["Go", "Notion", "Library"],
+    href: "",
+    github: "https://github.com/jomei/notionapi"
+  },
+  {
+    title: "ks-yaml",
+    desc: "Kambing Style YAML formater to YAML for better readability",
+    tags: ["Go", "YAML", "CLI", "Library"],
+    href: "",
+    github: "https://github.com/kambi-ng/ks-yaml"
+  },
+  {
+    title: "leetbot",
+    desc: "Discord Bot to get daily and random leetcode problems",
+    tags: ["Typescript", "Discord Bot"],
+    href: "",
+    github: "https://github.com/kambi-ng/leetbot"
+  },
+  {
+    title: "extract kurikulum",
+    desc: "Parse and convert university curriculum from PDF to JSON",
+    tags: ["Go", "Parser"],
+    href: "",
+    github: "https://github.com/mustafasegf/extract-kurikulum"
+  },
+  {
+    title: "notion notes",
+    desc: "Discord and line bot to save notes into Notion using API",
+    tags: ["Go", "Bot", "Notion"],
+    href: "",
+    github: "https://github.com/mustafasegf/notion-note"
+  },
+  {
+    title: "moodlefeed",
+    desc: "Discord and line bot to send notifications update when moodle changes",
+    tags: ["Go", "Bot", "Moodle"],
+    href: "",
+    github: "https://github.com/mustafasegf/moodlefeed"
+  },
+  {
+    title: "moodletui",
+    desc: "Moddle terminal user interface to navigate and see moodle courses",
+    tags: ["Go", "Terminal", "Bubbletea"],
+    href: "",
+    github: "https://github.com/mustafasegf/moodletui"
+  }
 ]
 
 
@@ -73,12 +128,12 @@ const skills = [
   <div id="hero" class="mb-16">
     <p class="text-neutral-content text-sm lg:text-md mb-2">Hi, my name is</p>
     <h3 class="text-info text-md sm:text-xl lg:text-4xl mb-6">Mustafa Zaki Assagaf</h3>
-    <h1 class="text-5xl lg:text-6xl font-semibold mb-8">
+    <h1 class="text-5xl lg:text-7xl font-semibold mb-8">
       I build <br />
       <AnimatedText client:load words={texts} /> <br />
       web technologies
     </h1>
-    <p class="mb-12 font-light md:w-[60%]">
+    <p class="mb-12 md:w-[60%]">
       I'm a <Accent>Backend Engineer</Accent>, <Accent>Cloud Engineer</Accent> and <Accent>System Engineer
       </Accent> who use <Accent>Golang</Accent>, <Accent>Rust</Accent> and <Accent>TypeScript</Accent>
     </p>
@@ -91,12 +146,18 @@ const skills = [
 
   <div id="showcase" class="mb-16">
     <h3 class="text-2xl font-semibold mb-8">Some Stuff That I've Built</h3>
-    <div class="container">
+    <div class="container mb-8">
       <div class="flex flex-wrap lg:justify-center">
         {showcase.map(({ title, img, alt, desc, tags, href, github }) => (
         <Cards title={title} img={img} alt={alt} desc={desc} tags={tags} href={href} github={github} />
         ))}
       </div>
+    </div>
+    <h3 class="text-2xl font-semibold mb-8">Other Projects</h3>
+    <div class="flex flex-wrap lg:justify-center">
+      {projects.map(({ title, desc, tags, href, github }) => (
+          <SmallCards title={title} desc={desc} tags={tags} href={href} github={github}/>
+      ))}
     </div>
   </div>
 

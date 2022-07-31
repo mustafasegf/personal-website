@@ -1,4 +1,5 @@
 ---
+import { Icon } from 'astro-icon'
 import { Picture } from '@astrojs/image/components';
 
 export interface Props {
@@ -25,12 +26,18 @@ const { title, img, alt, desc, tags, href, github, className } = Astro.props as 
     <p>{desc}</p>
     <div class="card-actions mb-4 justify-end">
       {tags.map((tag) => (
-      <div class="text-neutral hover:text-neutral-content badge badge-outline">{tag}</div>
+      <div class="text-neutral-content hover:text-secondary badge badge-outline">{tag}</div>
       ))}
     </div>
     <div class="card-actions">
-      <a target="_blank" href={href} class="btn btn-primary grow">Open ↗</a>
-      <a target="_blank" href={github} class="btn btn-secondary btn-outline basis-1/2">Github </a>
+      <a target="_blank" href={href} class="btn btn-primary grow">
+        <span class="ml-2">Open</span>
+        <Icon size={18} name="charm:link-external" />
+      </a>
+      <a target="_blank" href={github} class="btn btn-secondary btn-outline basis-1/2">
+        <span class="ml-2">Github</span>  
+        <Icon size={18} name="charm:github" />
+      </a>
     </div>
   </div>
 </div>
