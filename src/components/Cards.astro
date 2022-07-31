@@ -10,10 +10,9 @@ export interface Props {
   tags: string[]
   href: string
   github: string
-  className?: string
 }
 
-const { title, img, alt, desc, tags, href, github, className } = Astro.props as Props
+const { title, img, alt, desc, tags, href, github  } = Astro.props as Props
 ---
 
 <div class="card mb-4 lg:mr-4 w-full lg:w-[calc(50%-1rem)] bg-base-200 shadow-xl">
@@ -31,11 +30,11 @@ const { title, img, alt, desc, tags, href, github, className } = Astro.props as 
     </div>
     <div class="card-actions">
       <a target="_blank" href={href} class="btn btn-primary grow">
-        <span class="ml-2">Open</span>
+        <span class="mr-2">Open</span>
         <Icon size={18} name="charm:link-external" />
       </a>
       <a target="_blank" href={github} class="btn btn-secondary btn-outline basis-1/2">
-        <span class="ml-2">Github</span>  
+        <span class="mr-2">Github</span>  
         <Icon size={18} name="charm:github" />
       </a>
     </div>
