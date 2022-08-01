@@ -67,9 +67,10 @@ export const Hero: React.FC<{ texts: string[] }> = ({ texts }) => {
         variants={variantBuild(3)}
         className="mb-12 md:w-[60%]"
       >
-        I'm a <Accent>Backend Engineer</Accent>, <Accent>Cloud Engineer</Accent>{" "}
+        {/* TODO add link to projects */}
+        I'm a <Accent>Backend Engineer</Accent>, <Accent>Cloud Engineer</Accent>,{" "}
         and <Accent>System Engineer</Accent> who uses <Accent>Golang</Accent>,{" "}
-        <Accent>Rust</Accent> and <Accent>TypeScript</Accent>
+        <Accent>Rust</Accent>, and <Accent>TypeScript</Accent>
       </motion.p>
       <motion.div
         ref={ref}
@@ -422,10 +423,10 @@ export const About: React.FC = () => {
             variants={variantBuild(1)}
             className="mb-4 mt-4"
           >
-            <span className="font-semibold">Hi there! </span> <br /> My name is
-            Mustafa and I love to do web development. I mostly do backend
-            engineering, but i also can do frontend engineering as well. Other
-            than that, i also deal with cloud engineering using GCP and AWS.
+          <span className="font-semibold">Hi there! </span> <br /> 
+            My name is Mustafa and I love to do web development. 
+            I mostly do backend engineering, but I also can do frontend engineering. 
+            Other than that, I also deal with cloud engineering using GCP and AWS. 
             I've also played with system engineering projects.
           </motion.p>
           <motion.p
@@ -437,13 +438,13 @@ export const About: React.FC = () => {
           >
             Right now I'm{" "}
             <span className="text-secondary">actively looking for a job</span>{" "}
-            and can do remote fulltime, or partime job.
+              and can do a remote full-time, or part-time job.
             <br />
             You can also checkout my latest project,{" "}
             <a className="link text-info" href="">
               Neoman
             </a>
-            ! Postman like aplication on the terminal.
+            ! Postman-like aplication on the terminal.
           </motion.p>
         </div>
       </div>
@@ -658,8 +659,7 @@ export const AnimatedText: React.FC<{ words: string[] }> = ({ words }) => {
     initial: {
       opacity: 0,
       y: -30,
-      transition: {
-      },
+      transition: {},
     },
     animate: {
       opacity: 1,
