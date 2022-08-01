@@ -473,7 +473,7 @@ export const Contact: React.FC<{
           message: "",
           className: "",
         });
-      }, 3000);
+      }, 5000);
     }
   }, [toast.visible]);
 
@@ -519,7 +519,6 @@ export const Contact: React.FC<{
           message: "Message sent successfully!",
           className: "alert alert-success",
         });
-        return
       }
       const text = await response.text();
       setToast({
