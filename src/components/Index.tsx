@@ -519,6 +519,7 @@ export const Contact: React.FC<{
           message: "Message sent successfully!",
           className: "alert alert-success",
         });
+        return
       }
       const text = await response.text();
       setToast({
