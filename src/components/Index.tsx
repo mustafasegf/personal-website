@@ -54,11 +54,11 @@ export const Hero: React.FC<{ texts: string[] }> = ({ texts }) => {
         animate={control}
         initial="hidden"
         variants={variantBuild(2)}
-        className="text-5xl lg:text-7xl font-semibold mb-8"
+        className="text-4xl lg:text-7xl font-semibold mb-8"
       >
         I build <br />
         <AnimatedText words={texts} /> <br />
-        <p>web technologies</p>
+        <p className="break-words">web technologies</p>
       </motion.h1>
       <motion.p
         ref={ref}
@@ -227,7 +227,7 @@ export const Showcase: React.FC<{
         Some Stuff That I've Built
       </motion.h3>
       <div className="container mb-8">
-        <div className="flex flex-wrap lg:justify-center">
+        <div className="flex flex-wrap justify-center">
           {showcase.map(({ title, img, alt, desc, tags, href, github }, i) => (
             <Cards
               key={i}
@@ -251,7 +251,7 @@ export const Showcase: React.FC<{
       >
         Other Projects
       </motion.h3>
-      <div className="flex flex-wrap lg:justify-center">
+      <div className="flex flex-wrap justify-center">
         {projects.map(({ title, desc, tags, href, github }, i) => (
           <SmallCards
             key={i}
@@ -423,10 +423,10 @@ export const About: React.FC = () => {
             variants={variantBuild(1)}
             className="mb-4 mt-4"
           >
-          <span className="font-semibold">Hi there! </span> <br /> 
-            My name is Mustafa and I love to do web development. 
-            I mostly do backend engineering, but I also can do frontend engineering. 
-            Other than that, I also deal with cloud engineering using GCP and AWS. 
+            <span className="font-semibold">Hi there! </span> <br />
+            My name is Mustafa and I love to do web development.
+            I mostly do backend engineering, but I also can do frontend engineering.
+            Other than that, I also deal with cloud engineering using GCP and AWS.
             I've also played with system engineering projects.
           </motion.p>
           <motion.p
@@ -438,7 +438,7 @@ export const About: React.FC = () => {
           >
             Right now I'm{" "}
             <span className="text-secondary">actively looking for a job</span>{" "}
-              and can do a remote full-time, or part-time job.
+            and can do a remote full-time, or part-time job.
             <br />
             You can also checkout my latest project,{" "}
             <a className="link text-info" href="">
@@ -524,33 +524,33 @@ export const SmallCards: React.FC<SmallCardsProps> = ({
       animate={control}
       initial="hidden"
       variants={variants}
-      className="card mb-4 lg:mr-4 w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.3%-1rem)] bg-base-200 shadow-xl"
+      className="card mb-4 md:mr-4 w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.3%-1rem)] bg-base-300 shadow-xl"
     >
       <div className="card-body">
         <h2 className="card-title">{title}</h2>
-        <p>{desc}</p>
-        <div className="card-actions items-center justify-end">
-          <div className="flex justify-end gap-4">
-            {github && (
-              <a target="_blank" href={github}>
-                <Icon
-                  fontSize={30}
-                  className="hover:text-info"
-                  icon="iconoir:github"
-                />
-              </a>
-            )}
+        <p className="mb-4">{desc}</p>
+        <div className="flex ">
+          <div className="flex flex-row items-end justify-start gap-2">
             {href && (
               <a target="_blank" href={href}>
                 <Icon
-                  fontSize={30}
+                  fontSize={24}
                   className="hover:text-info"
                   icon="akar-icons:link-out"
                 />
               </a>
             )}
+            {github && (
+              <a target="_blank" href={github}>
+                <Icon
+                  fontSize={24}
+                  className="hover:text-info"
+                  icon="iconoir:github"
+                />
+              </a>
+            )}
           </div>
-          <div className="card-actions mr-0 ml-auto gap-2">
+          <div className="card-actions justify-end flex-wrap mr-0 ml-auto gap-2">
             {tags.map((tag, i) => (
               <div
                 key={i}
@@ -605,14 +605,14 @@ export const Cards: React.FC<CardsProps> = ({
       animate={control}
       initial="hidden"
       variants={variants}
-      className="card mb-4 lg:mr-4 w-full lg:w-[calc(33.3%-1rem)] bg-base-200 shadow-xl"
+      className="card mb-4 md:mr-4 w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.3%-1rem)] bg-base-300 shadow-xl"
     >
       <figure className="">
-        <img alt={alt} src={img} />
+        <img className="w-full" alt={alt} src={img} />
       </figure>
-      <div className="card-body">
+      <div className="card-body p-4 lg:p-8">
         <h2 className="card-title">{title}</h2>
-        <p>{desc}</p>
+        <p className="mb-4">{desc}</p>
         <div className="card-actions mb-4 justify-end">
           {tags.map((tag, i) => (
             <div
@@ -631,7 +631,7 @@ export const Cards: React.FC<CardsProps> = ({
           <a
             target="_blank"
             href={github}
-            className="btn btn-secondary btn-outline basis-1/2"
+            className="btn btn-secondary btn-outline grow"
           >
             <span className="mr-2">Github</span>
             <Icon fontSize={18} icon="charm:github" />
