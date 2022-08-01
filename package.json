@@ -12,6 +12,7 @@
     "@astrojs/image": "^0.3.0",
     "@astrojs/react": "^0.4.2",
     "@astrojs/tailwind": "^0.2.5",
+    "@iconify/react": "^3.2.2",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
     "astro": "^1.0.0-rc.3",
@@ -28,6 +29,7 @@
     "astro-icon": "^0.7.3",
     "framer-motion": "^6.5.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-intersection-observer": "^9.4.0"
   }
 }

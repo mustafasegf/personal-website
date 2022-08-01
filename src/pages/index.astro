@@ -1,10 +1,9 @@
 ---
-import { Accent, AnimatedText } from "../components/Index";
-import Cards from "../components/Cards.astro";
-import SmallCards from "../components/SmallCard.astro";
+import { Accent, AnimatedText, Cards,  SmallCards } from "../components/Index";
 import Layout from "../layout/Layout.astro";
 
 import { Icon } from 'astro-icon'
+
 const texts = [
   "reliable",
   "fast",
@@ -147,10 +146,10 @@ const experience = [
   },
   {
     title: 'Backend Engineer',
-    company: 'Forky',
+    company: 'Fotoyu',
     location: 'Jakarta',
     range: 'Apr 2021 - Oct 2021',
-    href: 'https:/forky.id/',
+    href: 'https:/fotoyu.com/',
     list: [
       "increased endpoint response time by 56% by implement redis caching on postgres database query",
       "Debuged 3 golang with gin framework critical bug that prevent the app downtime for 6 hours",
@@ -224,11 +223,11 @@ const skills = [
     </h1>
     <p class="mb-12 md:w-[60%]">
       I'm a <Accent>Backend Engineer</Accent>, <Accent>Cloud Engineer</Accent> and <Accent>System Engineer
-      </Accent> who use <Accent>Golang</Accent>, <Accent>Rust</Accent> and <Accent>TypeScript</Accent>
+      </Accent> who uses <Accent>Golang</Accent>, <Accent>Rust</Accent> and <Accent>TypeScript</Accent>
     </p>
     <div class="flex flex-col sm:flex-row gap-2">
-      <a class="btn btn-primary text-primary-content btn-block sm:btn-wide mr-4"> Checkout My Work! </a>
-      <a class="btn btn-info btn-outline btn-block sm:btn-wide text-sm">Learn More About Me!</a>
+      <a href="#showcase" class="btn btn-primary text-primary-content btn-block sm:btn-wide mr-4"> Checkout My Work! </a>
+      <a href="#about" class="btn btn-info btn-outline btn-block sm:btn-wide text-sm">Learn More About Me!</a>
     </div>
   </div>
 
@@ -256,9 +255,9 @@ const skills = [
       </div>
     </div>
     <h3 class="text-2xl font-semibold mb-8">Other Projects</h3>
-    <div class="flex flex-wrap lg:justify-center">
+    <div  class="flex flex-wrap lg:justify-center">
       {projects.map(({ title, desc, tags, href, github }) => (
-      <SmallCards title={title} desc={desc} tags={tags} href={href} github={github} />
+        <SmallCards client:idle title={title} desc={desc} tags={tags} href={href} github={github} />
       ))}
     </div>
   </div>
@@ -275,8 +274,8 @@ const skills = [
               class="text-secondary hover:text-secondary-focus">@ {company} </a></h3>
           <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">
             {list && list.map(item => (
-          <div class="flex items-center gap-1 mb-2">
-            <Icon size={16} class="text-neutral" name="codicon:triangle-right" />
+          <div class="flex items-start gap-1 mb-2">
+            <Icon size={16} class="text-neutral-content min-w-fit mt-1" name="dashicons:arrow-right-alt2" />
             <p>{item}</p>
           </div>
           ))}
