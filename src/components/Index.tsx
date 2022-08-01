@@ -30,7 +30,7 @@ export const Hero: React.FC<{ texts: string[] }> = ({ texts }) => {
   }, [control, inView]);
 
   return (
-    <div id="hero" className="mb-16">
+    <div id="hero" className="mb-16 scroll-mt-24">
       <motion.p
         ref={ref}
         animate={control}
@@ -68,8 +68,8 @@ export const Hero: React.FC<{ texts: string[] }> = ({ texts }) => {
         className="mb-12 md:w-[60%]"
       >
         {/* TODO add link to projects */}
-        I'm a <Accent>Backend Engineer</Accent>, <Accent>Cloud Engineer</Accent>,{" "}
-        and <Accent>System Engineer</Accent> who uses <Accent>Golang</Accent>,{" "}
+        I'm a <Accent>Backend Engineer</Accent>, <Accent>Cloud Engineer</Accent>
+        , and <Accent>System Engineer</Accent> who uses <Accent>Golang</Accent>,{" "}
         <Accent>Rust</Accent>, and <Accent>TypeScript</Accent>
       </motion.p>
       <motion.div
@@ -81,7 +81,7 @@ export const Hero: React.FC<{ texts: string[] }> = ({ texts }) => {
       >
         <a
           href="#showcase"
-          className="btn btn-primary text-primary-content btn-block sm:btn-wide mr-4"
+          className="btn btn-primary text-primary-content btn-block sm:btn-wide mr-4 "
         >
           Checkout My Work!
         </a>
@@ -149,7 +149,7 @@ export const Skills: React.FC<{ skills: { name: string; icon: string }[] }> = ({
     }
   }, [control, inView]);
   return (
-    <div id="skill" className="mb-16">
+    <div id="skill" className="mb-16 scroll-mt-24">
       <motion.h3
         ref={ref}
         animate={control}
@@ -215,7 +215,7 @@ export const Showcase: React.FC<{
   }, [otherControl, otherInView]);
 
   return (
-    <div id="showcase" className="mb-16">
+    <div id="showcase" className="mb-16 scroll-mt-24">
       <motion.h3
         ref={projectRef}
         animate={projectControl}
@@ -352,7 +352,7 @@ export const Experience: React.FC<{ experience: ExperienceProps[] }> = ({
     }
   }, [control, inView]);
   return (
-    <div id="experience" className="mb-16">
+    <div id="experience" className="mb-16 scroll-mt-24">
       <motion.h3
         ref={ref}
         animate={control}
@@ -404,7 +404,7 @@ export const About: React.FC = () => {
     }
   }, [control, inView]);
   return (
-    <div id="about" className="mb-16">
+    <div id="about" className="mb-16 scroll-mt-24">
       <motion.h3
         ref={ref}
         animate={control}
@@ -424,9 +424,9 @@ export const About: React.FC = () => {
             className="mb-4 mt-4"
           >
             <span className="font-semibold">Hi there! </span> <br />
-            My name is Mustafa and I love to do web development.
-            I mostly do backend engineering, but I also can do frontend engineering.
-            Other than that, I also deal with cloud engineering using GCP and AWS.
+            My name is Mustafa and I love to do web development. I mostly do
+            backend engineering, but I also can do frontend engineering. Other
+            than that, I also deal with cloud engineering using GCP and AWS.
             I've also played with system engineering projects.
           </motion.p>
           <motion.p
@@ -472,9 +472,12 @@ export const ScrollToTop: React.FC = () => {
   }, []);
 
   return (
-    <>
+    <AnimatePresence>
       {visible && (
-        <a
+        <motion.a
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 30 }}
           onClick={scrollToTop}
           className="fixed bottom-6 right-6 p-1 bg-primary hover:bg-primary-focus rounded-full"
         >
@@ -483,9 +486,9 @@ export const ScrollToTop: React.FC = () => {
             className="hover:text-base-content"
             icon="ant-design:caret-up-filled"
           />
-        </a>
+        </motion.a>
       )}
-    </>
+    </AnimatePresence>
   );
 };
 
