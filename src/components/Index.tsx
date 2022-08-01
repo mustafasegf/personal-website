@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
-import { motion, useAnimation } from "framer-motion";
+import { motion, AnimatePresence, useAnimation, useCycle } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Icon } from "@iconify/react";
 
@@ -58,7 +58,7 @@ export const Hero: React.FC<{ texts: string[] }> = ({ texts }) => {
       >
         I build <br />
         <AnimatedText words={texts} /> <br />
-        web technologies
+        <p>web technologies</p>
       </motion.h1>
       <motion.p
         ref={ref}
@@ -326,7 +326,7 @@ export const ExperienceItems: React.FC<{
                 className="text-neutral-content min-w-fit mt-1"
                 icon="dashicons:arrow-right-alt2"
               />
-              <p>{item}</p>
+              <p className="text-base-content">{item}</p>
             </div>
           ))}
       </div>
@@ -643,57 +643,52 @@ export const Cards: React.FC<CardsProps> = ({
 
 export const AnimatedText: React.FC<{ words: string[] }> = ({ words }) => {
   const [index, setIndex] = useState(0);
+  const [word, setWord] = useState(words[0]);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((index + 1) % words.length);
-    }, 1500);
+      setWord(words[index]);
+    }, 2000);
 
     return () => clearInterval(interval);
   }, [index]);
 
   const sentence = {
-    hidden: {
-      opacity: 1,
-      transition: {
-        delay: 0.5,
-      },
-    },
-    visible: {
-      opacity: 1,
-      transition: {
-        delay: 0.5,
-        staggerChildren: 0.025,
-      },
-    },
-  };
-
-  const letter = {
-    hidden: {
+    initial: {
       opacity: 0,
-      y: 50,
+      y: -30,
+      transition: {
+      },
     },
-    visible: {
+    animate: {
       opacity: 1,
       y: 0,
+      transition: {
+        duration: 0.5,
+      },
+    },
+    exit: {
+      opacity: 0,
+      y: 30,
+      transition: {
+        duration: 0.5,
+      },
     },
   };
 
   return (
-    <motion.span
-      initial="hidden"
-      animate="visible"
-      className="text-secondary"
-      variants={sentence}
-      key={words[index]}
-    >
-      {words[index].split("").map((char, i) => {
-        return (
-          <motion.span key={words[index] + "-" + i} variants={letter}>
-            {char}
-          </motion.span>
-        );
-      })}
-    </motion.span>
+    <AnimatePresence>
+      <motion.span
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        variants={sentence}
+        key={word}
+        className="text-secondary absolute"
+      >
+        {word}
+      </motion.span>
+    </AnimatePresence>
   );
 };
