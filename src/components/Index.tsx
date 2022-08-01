@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
+import type { FormEventHandler } from "react";
 import { motion, AnimatePresence, useAnimation, useCycle } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Icon } from "@iconify/react";
@@ -447,6 +448,163 @@ export const About: React.FC = () => {
             ! Postman-like aplication on the terminal.
           </motion.p>
         </div>
+      </div>
+    </div>
+  );
+};
+
+export const Contact: React.FC<{
+  email: string;
+  phone: string;
+  linkedin: string;
+  github: string;
+}> = ({ email, phone, linkedin, github }) => {
+  const [toast, setToast] = useState({
+    visible: false,
+    message: "",
+    className: "",
+  });
+
+  useEffect(() => {
+    if (toast.visible) {
+      setTimeout(() => {
+        setToast({
+          visible: false,
+          message: "",
+          className: "",
+        });
+      }, 3000);
+    }
+  }, [toast.visible]);
+
+  const variantBuild = (i: number) => {
+    return {
+      visible: {
+        opacity: 1,
+        y: 0,
+        transition: { delay: 0.3 * i, duration: 0.5 },
+      },
+      hidden: { opacity: 0, y: 100 },
+    };
+  };
+
+  const control = useAnimation();
+  const [ref, inView] = useInView();
+
+  const submitHandler: FormEventHandler<HTMLFormElement> = async (e) => {
+    e.preventDefault();
+    interface FormData {
+      name: string;
+      email: string;
+      message: string;
+    }
+    const formData = new FormData(e.currentTarget);
+    const data: FormData = {
+      name: formData.get("name") as string,
+      email: formData.get("email") as string,
+      message: formData.get("message") as string,
+    };
+
+    try {
+      const response = await fetch("https://mustafasegf.com/mail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      if (response.ok) {
+        setToast({
+          visible: true,
+          message: "Message sent successfully!",
+          className: "alert alert-success",
+        });
+      }
+      const text = await response.text();
+      setToast({
+        visible: true,
+        message: text,
+        className: "alert alert-error",
+      });
+    } catch (error) {
+      setToast({
+        visible: true,
+        message: error.message,
+        className: "alert alert-error",
+      });
+    }
+  };
+
+  useEffect(() => {
+    if (inView) {
+      control.start("visible");
+    }
+  }, [control, inView]);
+  return (
+    <div id="about" className="mb-16 scroll-mt-24">
+      {toast.visible && (
+        <div className="toast toast-top toast-center mt-12 z-20">
+          <div className={toast.className}>
+            <div>
+              <span>{toast.message}</span>
+            </div>
+          </div>
+        </div>
+      )}
+      <motion.h3
+        ref={ref}
+        animate={control}
+        initial="hidden"
+        variants={variantBuild(0)}
+        className="text-2xl font-semibold mb-4"
+      >
+        Contact
+      </motion.h3>
+      <div className="flex flex-col space-y-4">
+        <motion.p
+          ref={ref}
+          animate={control}
+          initial="hidden"
+          variants={variantBuild(1)}
+          className="mb-4"
+        >
+          Contact me at
+        </motion.p>
+
+        <form onSubmit={submitHandler}>
+          <div className="form-control w-full max-w-lg">
+            <label className="label">
+              <span className="label-text">Enter Your Name</span>
+            </label>
+            <input
+              type="text"
+              name="name"
+              placeholder="Enter Your Name"
+              className="input input-bordered w-full "
+              required={true}
+            />
+            <label className="label">
+              <span className="label-text">Enter Your Email</span>
+            </label>
+            <input
+              type="text"
+              name="email"
+              placeholder="Enter Your Email"
+              className="input input-bordered w-full"
+              required={true}
+            />
+            <label className="label">
+              <span className="label-text">Enter Your Messge</span>
+            </label>
+            <textarea
+              name="message"
+              placeholder="Enter Your Email"
+              className="input input-bordered min-h-16 mb-4 w-full"
+              required={true}
+            />
+            <button className="btn btn-secondary">Submit</button>
+          </div>
+        </form>
       </div>
     </div>
   );

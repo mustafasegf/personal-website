@@ -1,5 +1,5 @@
 ---
-import { Hero, Skills, Showcase, Experience, About, ScrollToTop } from "../components/Index";
+import { Hero, Skills, Showcase, Experience, About, Contact, ScrollToTop } from "../components/Index";
 import Layout from "../layout/Layout.astro";
 
 import { Icon } from 'astro-icon'
@@ -211,6 +211,8 @@ const skills = [
   { name: 'AWS', icon: "simple-icons:amazonaws" },
   { name: 'GCP', icon: "simple-icons:googlecloud" },
 ];
+
+const {EMAIL, PHONE, LINKEDIN, GITHUB} =  import.meta.env
 ---
 <Layout>
   <Hero client:load texts={texts} />
@@ -218,7 +220,9 @@ const skills = [
   <Showcase client:load projects={projects} showcase={showcase} />
   <Experience client:load experience={experience} />
   <About client:load />
+  <Contact client:load email={EMAIL} phone={PHONE} linkedin={LINKEDIN} github={GITHUB} />
   <ScrollToTop client:load />
+
 
   <footer>
 
@@ -226,4 +230,4 @@ const skills = [
 
 </Layout>
 <span />
-<span /><span />
+<span />
