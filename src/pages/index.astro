@@ -1,8 +1,6 @@
 ---
-import { Hero, Skills, Showcase, Experience, About, Contact, ScrollToTop } from "../components/Index";
+import { Hero, Skills, Showcase, Experience, About, Contact, Footer, ScrollToTop } from "../components/Index";
 import Layout from "../layout/Layout.astro";
-
-import { Icon } from 'astro-icon'
 
 const texts = [
   "reliable",
@@ -212,7 +210,24 @@ const skills = [
   { name: 'GCP', icon: "simple-icons:googlecloud" },
 ];
 
-const {EMAIL, PHONE, LINKEDIN, GITHUB} =  import.meta.env
+const { EMAIL, PHONE, LINKEDIN, GITHUB } = import.meta.env
+const contacts = [
+  {
+    name: 'Github',
+    icon: "charm:github",
+    link: GITHUB
+  },
+  {
+    name: 'Linkedin',
+    icon: "akar-icons:linkedin-fill",
+    link: LINKEDIN
+  },
+  {
+    name: 'Email',
+    icon: "ic:round-email",
+    link: EMAIL
+  },
+]
 ---
 <Layout>
   <Hero client:load texts={texts} />
@@ -220,14 +235,9 @@ const {EMAIL, PHONE, LINKEDIN, GITHUB} =  import.meta.env
   <Showcase client:load projects={projects} showcase={showcase} />
   <Experience client:load experience={experience} />
   <About client:load />
-  <Contact client:load email={EMAIL} phone={PHONE} linkedin={LINKEDIN} github={GITHUB} />
+  <Contact client:load contacts={contacts} />
   <ScrollToTop client:load />
-
-
-  <footer>
-
-  </footer>
-
 </Layout>
+<Footer />
 <span />
 <span />

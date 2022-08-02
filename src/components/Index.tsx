@@ -453,12 +453,52 @@ export const About: React.FC = () => {
   );
 };
 
+export const ContactChild: React.FC<{
+  name: string;
+  icon: string;
+  link: string;
+  index: number;
+}> = ({ name, icon, link, index }) => {
+  const variantBuild = (i: number) => {
+    return {
+      visible: {
+        opacity: 1,
+        y: 0,
+        transition: { delay: 0.3 * (i + 2), duration: 0.5 },
+      },
+      hidden: { opacity: 0, y: 100 },
+    };
+  };
+
+  const control = useAnimation();
+  const [ref, inView] = useInView();
+
+  useEffect(() => {
+    if (inView) {
+      control.start("visible");
+    }
+  }, [control, inView]);
+  return (
+    <motion.div
+      ref={ref}
+      animate={control}
+      initial="hidden"
+      variants={variantBuild(index)}
+      className="flex items-center"
+    >
+      <div className="bg-secondary p-2 rounded-full mr-4">
+        <Icon className="text-secondary-content" icon={icon} fontSize={30} />
+      </div>
+      <a href={link} className="hover:text-info">
+        {name}
+      </a>
+    </motion.div>
+  );
+};
 export const Contact: React.FC<{
-  email: string;
-  phone: string;
-  linkedin: string;
-  github: string;
-}> = ({ email, phone, linkedin, github }) => {
+  contacts: { name: string; icon: string; link: string }[];
+}> = ({ contacts }) => {
+
   const [toast, setToast] = useState({
     visible: false,
     message: "",
@@ -490,6 +530,12 @@ export const Contact: React.FC<{
 
   const control = useAnimation();
   const [ref, inView] = useInView();
+
+  useEffect(() => {
+    if (inView) {
+      control.start("visible");
+    }
+  }, [control, inView]);
 
   const submitHandler: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
@@ -536,11 +582,6 @@ export const Contact: React.FC<{
     }
   };
 
-  useEffect(() => {
-    if (inView) {
-      control.start("visible");
-    }
-  }, [control, inView]);
   return (
     <div id="about" className="mb-16 scroll-mt-24">
       {toast.visible && (
@@ -559,57 +600,125 @@ export const Contact: React.FC<{
         variants={variantBuild(0)}
         className="text-2xl font-semibold mb-4"
       >
-        Contact
+        Let's Talk
       </motion.h3>
-      <div className="flex flex-col space-y-4">
-        <motion.p
-          ref={ref}
-          animate={control}
-          initial="hidden"
-          variants={variantBuild(1)}
-          className="mb-4"
-        >
-          Contact me at
-        </motion.p>
 
-        <form onSubmit={submitHandler}>
-          <div className="form-control w-full max-w-lg">
-            <label className="label">
-              <span className="label-text">Enter Your Name</span>
-            </label>
-            <input
-              type="text"
-              name="name"
-              placeholder="Enter Your Name"
-              className="input input-bordered w-full "
-              required={true}
-            />
-            <label className="label">
-              <span className="label-text">Enter Your Email</span>
-            </label>
-            <input
-              type="text"
-              name="email"
-              placeholder="Enter Your Email"
-              className="input input-bordered w-full"
-              required={true}
-            />
-            <label className="label">
-              <span className="label-text">Enter Your Messge</span>
-            </label>
-            <textarea
-              name="message"
-              placeholder="Enter Your Email"
-              className="input input-bordered min-h-16 mb-4 w-full"
-              required={true}
-            />
-            <button className="btn btn-secondary">Submit</button>
+      <div className="flex flex-col lg:flex-row gap-16 items-stretch">
+        <div className="flex flex-col space-y-4">
+          <motion.p
+            ref={ref}
+            animate={control}
+            initial="hidden"
+            variants={variantBuild(1)}
+            className="mb-4"
+          >
+            If you want to reach out or just want to say hi, you can contact me
+            directly trough the form below.
+          </motion.p>
+
+          <form onSubmit={submitHandler}>
+            <div className="form-control w-full ">
+              <motion.div
+                ref={ref}
+                animate={control}
+                initial="hidden"
+                variants={variantBuild(2)}
+                className="mb-4"
+              >
+                <label className="label">
+                  <span className="label-text">Your Name</span>
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Enter Your Name..."
+                  className="input input-bordered input-secondary focus:input-info w-full "
+                  required={true}
+                />
+              </motion.div>
+              <motion.div
+                ref={ref}
+                animate={control}
+                initial="hidden"
+                variants={variantBuild(3)}
+                className="mb-4"
+              >
+                <label className="label">
+                  <span className="label-text">Your Email</span>
+                </label>
+                <input
+                  type="text"
+                  name="email"
+                  placeholder="Enter Your Email..."
+                  className="input input-bordered input-secondary focus:input-info w-full"
+                  required={true}
+                />
+              </motion.div>
+              <motion.div
+                ref={ref}
+                animate={control}
+                initial="hidden"
+                variants={variantBuild(4)}
+                className="mb-4"
+              >
+                <label className="label">
+                  <span className="label-text">Your Messge</span>
+                </label>
+                <textarea
+                  name="message"
+                  placeholder="Enter Your Message..."
+                  className="input input-bordered min-h-[8rem] input-secondary pt-2 focus:input-info mb-4 w-full"
+                  required={true}
+                />
+              </motion.div>
+              <motion.button
+                ref={ref}
+                animate={control}
+                initial="hidden"
+                variants={variantBuild(5)}
+                className="btn btn-secondary"
+              >
+                Submit
+              </motion.button>
+            </div>
+          </form>
+        </div>
+        <div className="flex flex-col">
+          <motion.p
+            ref={ref}
+            animate={control}
+            initial="hidden"
+            variants={variantBuild(1)}
+            className="mb-4 lg:mb-16"
+          >
+            You can also contact me trough these link
+          </motion.p>
+          <div className="flex flex-row lg:flex-col gap-4 h-full">
+            {contacts.map((contact, i) => (
+              <ContactChild
+                key={i}
+                index={i}
+                name={contact.name}
+                icon={contact.icon}
+                link={contact.link}
+              />
+            ))}
           </div>
-        </form>
+        </div>
       </div>
     </div>
   );
 };
+
+export const Footer: React.FC = () => {
+  return (
+    <footer className="flex justify-center content-center bg-base-300 min-h-16">
+      <p className="self-center">
+        Made with ❤️  from Mustafa
+      </p>
+    </footer>
+  )
+}
 
 export const ScrollToTop: React.FC = () => {
   const [visible, setVisible] = useState(false);
