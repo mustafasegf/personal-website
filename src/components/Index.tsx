@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import type { FormEventHandler } from "react";
-import { motion, AnimatePresence, useAnimation, useCycle } from "framer-motion";
+import { motion, AnimatePresence, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Icon } from "@iconify/react";
 
@@ -9,7 +9,10 @@ export const Accent: React.FC<{ children: string }> = ({ children }) => (
   <span className="text-lg text-secondary whitespace-nowrap"> {children}</span>
 );
 
-export const Hero: React.FC<{ texts: string[] }> = ({ texts }) => {
+export const Hero: React.FC<{ texts: string[]; img: string }> = ({
+  texts,
+  img,
+}) => {
   const variantBuild = (i: number) => {
     return {
       visible: {
@@ -30,69 +33,106 @@ export const Hero: React.FC<{ texts: string[] }> = ({ texts }) => {
     }
   }, [control, inView]);
 
+  const [visible, setVisible] = useState(false);
+  const shadeHandler: FormEventHandler = (e) => {
+    e.preventDefault();
+    setVisible(!visible);
+  };
   return (
     <div id="hero" className="mb-16 scroll-mt-24">
-      <motion.p
-        ref={ref}
-        animate={control}
-        initial="hidden"
-        variants={variantBuild(0)}
-        className="text-neutral-content text-sm lg:text-md mb-2"
-      >
-        Hi, my name is
-      </motion.p>
-      <motion.h3
-        ref={ref}
-        animate={control}
-        initial="hidden"
-        variants={variantBuild(1)}
-        className="text-info text-md sm:text-xl lg:text-4xl mb-6"
-      >
-        Mustafa Zaki Assagaf
-      </motion.h3>
-      <motion.h1
-        ref={ref}
-        animate={control}
-        initial="hidden"
-        variants={variantBuild(2)}
-        className="text-4xl lg:text-7xl font-semibold mb-8"
-      >
-        I build <br />
-        <AnimatedText words={texts} /> <br />
-        <p className="break-words">web technologies</p>
-      </motion.h1>
-      <motion.p
-        ref={ref}
-        animate={control}
-        initial="hidden"
-        variants={variantBuild(3)}
-        className="mb-12 md:w-[60%]"
-      >
-        {/* TODO add link to projects */}
-        I'm a <Accent>Backend Engineer</Accent>, <Accent>Cloud Engineer</Accent>
-        , and <Accent>System Engineer</Accent> who uses <Accent>Golang</Accent>,{" "}
-        <Accent>Rust</Accent>, and <Accent>TypeScript</Accent>
-      </motion.p>
-      <motion.div
-        ref={ref}
-        animate={control}
-        initial="hidden"
-        variants={variantBuild(4)}
-        className="flex flex-col sm:flex-row gap-2"
-      >
-        <a
-          href="#showcase"
-          className="btn btn-primary text-primary-content btn-block sm:btn-wide mr-4 "
-        >
-          Checkout My Work!
-        </a>
-        <a
-          href="#about"
-          className="btn btn-info btn-outline btn-block sm:btn-wide text-sm"
-        >
-          Learn More About Me!
-        </a>
-      </motion.div>
+      <div className="flex flex-row flex-wrap justify-between">
+        <div className="flex flex-col w-min">
+          <motion.p
+            ref={ref}
+            animate={control}
+            initial="hidden"
+            variants={variantBuild(0)}
+            className="text-neutral-content text-sm lg:text-md mb-2 w-min whitespace-nowrap"
+          >
+            Hi, my name is
+          </motion.p>
+          <motion.h3
+            ref={ref}
+            animate={control}
+            initial="hidden"
+            variants={variantBuild(1)}
+            className="text-info text-md sm:text-xl lg:text-4xl mb-6 w-min whitespace-nowrap"
+          >
+            Mustafa Zaki Assagaf
+          </motion.h3>
+          <motion.h1
+            ref={ref}
+            animate={control}
+            initial="hidden"
+            variants={variantBuild(2)}
+            className="text-4xl lg:text-7xl font-semibold mb-8 w-min mr-0"
+          >
+            I build <br />
+            <AnimatedText words={texts} /> <br />
+            <span className="whitespace-nowrap lg:whitespace-normal">
+              web application
+            </span>
+          </motion.h1>
+          <motion.p
+            ref={ref}
+            animate={control}
+            initial="hidden"
+            variants={variantBuild(3)}
+            className="mb-12 "
+          >
+            {/* TODO add link to projects */}
+            I'm a <Accent>Backend Engineer</Accent>,{" "}
+            <Accent>Cloud Engineer</Accent>, and{" "}
+            <Accent>System Engineer</Accent> who uses <Accent>Golang</Accent>,{" "}
+            <Accent>Rust</Accent>, and <Accent>TypeScript</Accent>
+          </motion.p>
+          <motion.div
+            ref={ref}
+            animate={control}
+            initial="hidden"
+            variants={variantBuild(4)}
+            className="flex flex-col sm:flex-row gap-2"
+          >
+            <a
+              href="#showcase"
+              className="btn btn-primary text-primary-content btn-block sm:btn-wide mr-4 "
+            >
+              Checkout My Work!
+            </a>
+            <a
+              href="#about"
+              className="btn btn-info btn-outline btn-block sm:btn-wide text-sm"
+            >
+              Learn More About Me!
+            </a>
+          </motion.div>
+        </div>
+        <div className="flex flex-col justify-center mx-auto">
+          <div className="max-w-[16rem] xl:max-w-sm mx-auto">
+            <AnimatePresence>
+              {visible && (
+                <motion.div
+                  initial={{ opacity: 0, y: -100 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -100 }}
+                  transition={{ duration: 1 }}
+                >
+                  <Icon
+                    className="absolute ml-[3rem] xl:ml-[5.25rem] mt-[4rem] xl:mt-[6.5rem] opacity-95 text-[700%] xl:text-[1000%]"
+                    icon="fxemoji:darksunglasses"
+                  />
+                </motion.div>
+              )}
+            </AnimatePresence>
+            <img src={img} />
+          </div>
+
+          <p className="min-w mx-auto text-center break-words max-w-[16rem] xl:max-w-[24rem] mb-4">To make you less bored, you can add shade to my face</p>
+          <button onClick={shadeHandler} className="btn w-fit mx-auto">
+            {visible ? "Remove" : "Add"} Shade
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
@@ -498,7 +538,6 @@ export const ContactChild: React.FC<{
 export const Contact: React.FC<{
   contacts: { name: string; icon: string; link: string }[];
 }> = ({ contacts }) => {
-
   const [toast, setToast] = useState({
     visible: false,
     message: "",
@@ -583,7 +622,7 @@ export const Contact: React.FC<{
   };
 
   return (
-    <div id="about" className="mb-16 scroll-mt-24">
+    <div id="contact" className="mb-16 scroll-mt-24">
       {toast.visible && (
         <div className="toast toast-top toast-center mt-12 z-20">
           <div className={toast.className}>
@@ -693,7 +732,7 @@ export const Contact: React.FC<{
           >
             You can also contact me trough these link
           </motion.p>
-          <div className="flex flex-row lg:flex-col gap-4 h-full">
+          <div className="flex flex-row flex-wrap lg:flex-col gap-4 h-full">
             {contacts.map((contact, i) => (
               <ContactChild
                 key={i}
@@ -713,12 +752,10 @@ export const Contact: React.FC<{
 export const Footer: React.FC = () => {
   return (
     <footer className="flex justify-center content-center bg-base-300 min-h-16">
-      <p className="self-center">
-        Made with ❤️  from Mustafa
-      </p>
+      <p className="self-center">Made with ❤️ from Mustafa</p>
     </footer>
-  )
-}
+  );
+};
 
 export const ScrollToTop: React.FC = () => {
   const [visible, setVisible] = useState(false);

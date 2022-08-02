@@ -9,6 +9,8 @@ const texts = [
   "robust"
 ]
 
+const img = "/images/face.png"
+
 const showcase = [
   {
     title: "URL Shortener",
@@ -210,7 +212,8 @@ const skills = [
   { name: 'GCP', icon: "simple-icons:googlecloud" },
 ];
 
-const { EMAIL, PHONE, LINKEDIN, GITHUB } = import.meta.env
+
+const { EMAIL, LINKEDIN, GITHUB } = import.meta.env
 const contacts = [
   {
     name: 'Github',
@@ -230,7 +233,7 @@ const contacts = [
 ]
 ---
 <Layout>
-  <Hero client:load texts={texts} />
+  <Hero client:load texts={texts} img={img} />
   <Skills client:load skills={skills} />
   <Showcase client:load projects={projects} showcase={showcase} />
   <Experience client:load experience={experience} />
