@@ -107,7 +107,13 @@ export const Hero: React.FC<{ texts: string[]; img: string }> = ({
             </a>
           </motion.div>
         </div>
-        <div className="flex flex-col justify-center mx-auto">
+        <motion.div
+          ref={ref}
+          animate={control}
+          initial="hidden"
+          variants={variantBuild(4)}
+          className="flex flex-col justify-center mx-auto"
+        >
           <div className="max-w-[16rem] xl:max-w-sm mx-auto">
             <AnimatePresence>
               {visible && (
@@ -127,11 +133,13 @@ export const Hero: React.FC<{ texts: string[]; img: string }> = ({
             <img src={img} />
           </div>
 
-          <p className="min-w mx-auto text-center break-words max-w-[16rem] xl:max-w-[24rem] mb-4">To make you less bored, you can add shade to my face</p>
+          <p className="min-w mx-auto text-center break-words max-w-[16rem] xl:max-w-[24rem] mb-4">
+            To make you less bored, you can add shade to my face
+          </p>
           <button onClick={shadeHandler} className="btn w-fit mx-auto">
             {visible ? "Remove" : "Add"} Shade
           </button>
-        </div>
+        </motion.div>
       </div>
     </div>
   );
