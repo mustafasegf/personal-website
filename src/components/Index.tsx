@@ -25,13 +25,14 @@ export const Hero: React.FC<{ texts: string[]; img: string }> = ({
   };
 
   const control = useAnimation();
-  const [ref, inView] = useInView();
+  const [load, setLoad] = useState(false);
 
   useEffect(() => {
-    if (inView) {
+    if (!load) {
       control.start("visible");
+      setLoad(false);
     }
-  }, [control, inView]);
+  }, []);
 
   const [visible, setVisible] = useState(false);
   const shadeHandler: FormEventHandler = (e) => {
@@ -43,7 +44,7 @@ export const Hero: React.FC<{ texts: string[]; img: string }> = ({
       <div className="flex flex-row flex-wrap justify-between">
         <div className="flex flex-col w-min">
           <motion.p
-            ref={ref}
+            
             animate={control}
             initial="hidden"
             variants={variantBuild(0)}
@@ -52,7 +53,7 @@ export const Hero: React.FC<{ texts: string[]; img: string }> = ({
             Hi, my name is
           </motion.p>
           <motion.h3
-            ref={ref}
+            
             animate={control}
             initial="hidden"
             variants={variantBuild(1)}
@@ -61,7 +62,7 @@ export const Hero: React.FC<{ texts: string[]; img: string }> = ({
             Mustafa Zaki Assagaf
           </motion.h3>
           <motion.h1
-            ref={ref}
+            
             animate={control}
             initial="hidden"
             variants={variantBuild(2)}
@@ -74,7 +75,6 @@ export const Hero: React.FC<{ texts: string[]; img: string }> = ({
             </span>
           </motion.h1>
           <motion.p
-            ref={ref}
             animate={control}
             initial="hidden"
             variants={variantBuild(3)}
@@ -87,7 +87,6 @@ export const Hero: React.FC<{ texts: string[]; img: string }> = ({
             <Accent>Rust</Accent>, and <Accent>TypeScript</Accent>
           </motion.p>
           <motion.div
-            ref={ref}
             animate={control}
             initial="hidden"
             variants={variantBuild(4)}
@@ -108,7 +107,6 @@ export const Hero: React.FC<{ texts: string[]; img: string }> = ({
           </motion.div>
         </div>
         <motion.div
-          ref={ref}
           animate={control}
           initial="hidden"
           variants={variantBuild(4)}
@@ -537,7 +535,7 @@ export const ContactChild: React.FC<{
       <div className="bg-secondary p-2 rounded-full mr-4">
         <Icon className="text-secondary-content" icon={icon} fontSize={30} />
       </div>
-      <a href={link} className="hover:text-info">
+      <a target="_blank" href={link} className="hover:text-info">
         {name}
       </a>
     </motion.div>

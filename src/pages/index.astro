@@ -109,7 +109,7 @@ const projects = [
 
 const experience = [
   {
-    title: 'Backend Engineer',
+    title: 'Intern Backend Engineer',
     company: 'SayaKaya',
     location: 'Jakarta',
     range: 'Jan 2022 - May 2022',
@@ -133,8 +133,8 @@ const experience = [
       "Helped developed backend service with microservices, logging, and orchestration"
     ]
   }, */
-  {
-    title: 'Backend Engineer',
+  /* {
+    title: 'Intern Backend Engineer',
     title: 'Backend Engineer',
     company: 'Lingotalk',
     location: 'Jakarta',
@@ -142,10 +142,11 @@ const experience = [
     href: 'https:/lingotalk.co/',
     list: [
       "Created recurring payment systems with NodeJS and Midtrans Payment Gateway service",
+      ""
     ]
-  },
+  }, */
   {
-    title: 'Backend Engineer',
+    title: 'Intern Backend Engineer',
     company: 'Fotoyu',
     location: 'Jakarta',
     range: 'Apr 2021 - Oct 2021',
@@ -153,8 +154,8 @@ const experience = [
     list: [
       "increased endpoint response time by 56% by implementing Redis caching on Postgres database query",
       "Debugged 3 golang with gin framework critical bug that prevents the app downtime for 6 hours",
-      "Handle 5 different backend services using golang, Postgres, RabbitMQ, Elasticsearch, and Redis",
-      "Create technical requirement document and API contract for 5 backend services",
+      /* "Handle 5 different backend services using golang, Postgres, RabbitMQ, Elasticsearch, and Redis", */
+      /* "Create technical requirement document and API contract for 5 backend services", */
       "Programmed CI/CD using AWS CodePipeline, AWS CodeBuild, AWS EKS using HashiCorp Terraform",
 
     ]
@@ -166,7 +167,7 @@ const experience = [
     range: 'Jul 2021 - Sep 2021',
     href: 'https://aacunair.id/',
     list: [
-      "Developed REST API backend for a tinder-like app using nodejs, typescript, Prisma, AWS elastic beanstalk",
+      "Developed REST API backend for multiple type of competition using golang, gin, postgres, docker, and AWS",
       "Enhanced API endpoint for load under 10ms using Postgres database indexing and Redis cache"
 
     ]
@@ -184,7 +185,7 @@ const experience = [
     ]
   },
   {
-    title: 'Lead Software Engineer',
+    title: 'Software Engineer',
     company: 'EDUCARE',
     location: 'University of Indonesia, Depok',
     range: 'Oct 2020 - Apr 2021',
@@ -216,19 +217,19 @@ const skills = [
 const { EMAIL, LINKEDIN, GITHUB } = import.meta.env
 const contacts = [
   {
-    name: 'Github',
+    name: GITHUB,
     icon: "charm:github",
-    link: GITHUB
+    link: "https://"+GITHUB
   },
   {
-    name: 'Linkedin',
+    name: LINKEDIN,
     icon: "akar-icons:linkedin-fill",
-    link: LINKEDIN
+    link: "https://"+LINKEDIN
   },
   {
-    name: 'Email',
+    name: EMAIL,
     icon: "ic:round-email",
-    link: EMAIL
+    link: "mailto:"+EMAIL
   },
 ]
 ---
