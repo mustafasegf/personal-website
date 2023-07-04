@@ -919,7 +919,7 @@ export const Cards: React.FC<CardsProps> = ({
       animate={control}
       initial="hidden"
       variants={variants}
-      className="card mb-4 md:mr-4 w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.3%-1rem)] bg-base-300 shadow-xl"
+      className="card mb-4 md:mr-4 w-full lg:w-[calc(50%-1rem)] bg-base-300 shadow-xl"
     >
       <figure className="">
         <img className="w-full" alt={alt} src={img} />
