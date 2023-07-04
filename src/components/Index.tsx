@@ -44,7 +44,6 @@ export const Hero: React.FC<{ texts: string[]; img: string }> = ({
       <div className="flex flex-row flex-wrap justify-between">
         <div className="flex flex-col w-min">
           <motion.p
-            
             animate={control}
             initial="hidden"
             variants={variantBuild(0)}
@@ -53,7 +52,6 @@ export const Hero: React.FC<{ texts: string[]; img: string }> = ({
             Hi, my name is
           </motion.p>
           <motion.h3
-            
             animate={control}
             initial="hidden"
             variants={variantBuild(1)}
@@ -62,7 +60,6 @@ export const Hero: React.FC<{ texts: string[]; img: string }> = ({
             Mustafa Zaki Assagaf
           </motion.h3>
           <motion.h1
-            
             animate={control}
             initial="hidden"
             variants={variantBuild(2)}
@@ -585,25 +582,36 @@ export const Contact: React.FC<{
   const submitHandler: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
     interface FormData {
-      name: string;
-      email: string;
+      from_name: string;
+      from_email: string;
       message: string;
     }
+
     const formData = new FormData(e.currentTarget);
-    const data: FormData = {
-      name: formData.get("name") as string,
-      email: formData.get("email") as string,
+    const template_params: FormData = {
+      from_name: formData.get("name") as string,
+      from_email: formData.get("email") as string,
       message: formData.get("message") as string,
     };
 
+    const data = {
+      service_id: "personal_website",
+      template_id: "template_personal_form",
+      user_id: "2h-h0QZiLxIp5SaXE",
+      template_params,
+    };
+
     try {
-      const response = await fetch("https://mustafasegf.com/mail", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+      const response = await fetch(
+        "https://api.emailjs.com/api/v1.0/email/send",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
       if (response.ok) {
         setToast({
           visible: true,
