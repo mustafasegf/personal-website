@@ -18,7 +18,7 @@ export const Hero: React.FC<{ texts: string[]; img: string }> = ({
       visible: {
         opacity: 1,
         y: 0,
-        transition: { delay: 0.3 * i, duration: 0.5 },
+        transition: { delay: 0.2 * i, duration: 0.3 },
       },
       hidden: { opacity: 0, y: 100 },
     };
@@ -555,7 +555,7 @@ export const Contact: React.FC<{
           message: "",
           className: "",
         });
-      }, 5000);
+      }, 1000);
     }
   }, [toast.visible]);
 
@@ -564,7 +564,7 @@ export const Contact: React.FC<{
       visible: {
         opacity: 1,
         y: 0,
-        transition: { delay: 0.3 * i, duration: 0.5 },
+        transition: { delay: 0.2 * i, duration: 0.3 },
       },
       hidden: { opacity: 0, y: 100 },
     };
@@ -908,7 +908,7 @@ export const Cards: React.FC<CardsProps> = ({
   github,
 }) => {
   const variants = {
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.3 } },
     hidden: { opacity: 0, y: 100 },
   };
 
