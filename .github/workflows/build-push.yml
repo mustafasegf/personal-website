@@ -1,0 +1,69 @@
+name: Build and Push Docker Image (Nix)
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@v12
+
+      - name: Setup Nix Cache (Magic Nix Cache)
+        uses: DeterminateSystems/magic-nix-cache-action@v7
+
+      - name: Build Docker image with Nix
+        run: nix build .#default --print-build-logs
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Load Nix-built image into Docker
+        run: docker load < result
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=sha
+            type=raw,value=latest,enable={{is_default_branch}}
+
+      - name: Tag Docker image
+        run: |
+          INTERNAL_IMAGE_NAME="personal-web:latest"
+          echo "Tagging ${INTERNAL_IMAGE_NAME} with tags: ${{ steps.meta.outputs.tags }}"
+          IFS=',' read -ra TAGS <<< "${{ steps.meta.outputs.tags }}"
+          for tag in "''${TAGS[@]}"; do
+            echo "Tagging ${INTERNAL_IMAGE_NAME} as ${tag}"
+            docker tag "${INTERNAL_IMAGE_NAME}" "${tag}"
+          done
+
+      - name: Push Docker image to GHCR
+        run: |
+          echo "Pushing tags: ${{ steps.meta.outputs.tags }}"
+          IFS=',' read -ra TAGS <<< "${{ steps.meta.outputs.tags }}"
+          for tag in "''${TAGS[@]}"; do
+            echo "Pushing ${tag}"
+            docker push "${tag}"
+          done
+
