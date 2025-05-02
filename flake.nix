@@ -55,7 +55,7 @@
             echo "Changed directory to $PWD"
 
             echo "Running bun install --frozen-lockfile..."
-            ASTRO_TELEMETRY_DISABLED=1 bun install --frozen-lockfile
+            ASTRO_TELEMETRY_DISABLED=1 bun install --frozen-lockfile --dns-result-order=ipv4first
             echo "Finished bun install."
 
             echo "Running bun run build..."
