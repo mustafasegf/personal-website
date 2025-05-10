@@ -1,5 +1,5 @@
 {
-  "name": "@example/framework-react",
+  "name": "personal web",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -10,7 +10,6 @@
     "serve": "bun ./src/index.ts"
   },
   "devDependencies": {
-    "@astrojs/image": "^0.18.0",
     "@astrojs/react": "^4.2.4",
     "@astrojs/tailwind": "^6.0.2",
     "@iconify/react": "^3.2.2",
