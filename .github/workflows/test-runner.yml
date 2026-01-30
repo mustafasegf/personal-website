@@ -1,0 +1,82 @@
+name: Test Self-Hosted Runner
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - test-runner
+
+jobs:
+  test-basic:
+    name: Test Basic Runner Capabilities
+    runs-on: self-hosted
+    steps:
+      - name: System Information
+        run: |
+          echo "=== System Information ==="
+          uname -a
+          echo ""
+          echo "=== Hostname ==="
+          hostname
+          echo ""
+          echo "=== Current User ==="
+          whoami
+          echo ""
+          echo "=== Working Directory ==="
+          pwd
+          echo ""
+          echo "=== Disk Space ==="
+          df -h
+          echo ""
+          echo "=== Memory ==="
+          free -h
+          
+      - name: Check Available Tools
+        run: |
+          echo "=== Checking Available Tools ==="
+          echo "Git version:"
+          git --version || echo "Git not found"
+          echo ""
+          echo "Nix version:"
+          nix --version || echo "Nix not found"
+          echo ""
+          echo "Docker version:"
+          docker --version || echo "Docker not found"
+          echo ""
+          echo "Kubectl version:"
+          kubectl version --client || echo "Kubectl not found"
+          echo ""
+          echo "Shell:"
+          echo $SHELL
+          
+  test-checkout:
+    name: Test Repository Checkout
+    runs-on: self-hosted
+    needs: test-basic
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: List repository contents
+        run: |
+          echo "=== Repository Contents ==="
+          ls -la
+          echo ""
+          echo "=== Git Status ==="
+          git status
+          
+  test-nix:
+    name: Test Nix Build
+    runs-on: self-hosted
+    needs: test-checkout
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Test Nix Flake
+        run: |
+          echo "=== Testing Nix Flake ==="
+          nix flake show || echo "Nix flake show failed"
+          echo ""
+          echo "=== Attempting Nix Build ==="
+          nix build .#default --print-build-logs || echo "Nix build failed - this is expected if dependencies are missing"
