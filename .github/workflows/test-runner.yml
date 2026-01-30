@@ -9,7 +9,7 @@ on:
 jobs:
   test-basic:
     name: Test Basic Runner Capabilities
-    runs-on: self-hosted
+    runs-on: arc-runner
     steps:
       - name: System Information
         run: |
@@ -51,7 +51,7 @@ jobs:
           
   test-checkout:
     name: Test Repository Checkout
-    runs-on: self-hosted
+    runs-on: arc-runner
     needs: test-basic
     steps:
       - name: Checkout repository
@@ -67,7 +67,7 @@ jobs:
           
   test-nix:
     name: Test Nix Build
-    runs-on: self-hosted
+    runs-on: arc-runner
     needs: test-checkout
     steps:
       - name: Checkout repository
