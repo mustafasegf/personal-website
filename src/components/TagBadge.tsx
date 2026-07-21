@@ -11,20 +11,12 @@ export function TagBadge({ tag }: { tag: string }) {
   );
 }
 
-export function TagFilterChip({
-  tag,
-  pressed,
-  onToggle,
-}: {
-  tag: string;
-  pressed: boolean;
-  onToggle: (tag: string) => void;
-}) {
+export function TagFilterChip({ tag }: { tag: string }) {
   return (
     <Badge
       variant="outline"
       className={`${tagClass} cursor-pointer transition-[background-color,translate] duration-150 hover:-translate-y-0.5 hover:bg-muted aria-pressed:bg-primary aria-pressed:text-primary-foreground aria-pressed:hover:bg-primary/85`}
-      render={<button type="button" aria-pressed={pressed} onClick={() => onToggle(tag)} />}
+      render={<button type="button" data-tag={tag} aria-pressed={false} />}
     >
       {tag}
     </Badge>

@@ -1,4 +1,3 @@
-import { useRef, useState } from "react";
 import { site } from "@/data/site";
 import { brutalButton } from "@/components/brutal";
 import { CopyIcon, GitHubIcon, LinkedInIcon, MailIcon, XTwitterIcon } from "@/components/icons";
@@ -10,24 +9,10 @@ const socials = [
 ];
 
 function CopyEmailButton() {
-  const [label, setLabel] = useState("Copy address");
-  const timer = useRef<ReturnType<typeof setTimeout>>(undefined);
-
-  const copy = async () => {
-    try {
-      await navigator.clipboard.writeText(site.email);
-      setLabel("Copied!");
-    } catch {
-      setLabel(site.email);
-    }
-    clearTimeout(timer.current);
-    timer.current = setTimeout(() => setLabel("Copy address"), 2000);
-  };
-
   return (
-    <button type="button" onClick={copy} className={brutalButton({ tone: "outline" })}>
+    <button type="button" data-copy-email className={brutalButton({ tone: "outline" })}>
       <CopyIcon />
-      {label}
+      <span data-copy-label>Copy address</span>
     </button>
   );
 }

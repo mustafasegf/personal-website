@@ -1,3 +1,8 @@
+import type { ImageMetadata } from "astro";
+import cudaImg from "@/assets/cuda-100-days.png";
+import intel8080Img from "@/assets/intel-8080.png";
+import pemasakImg from "@/assets/pemasak.png";
+
 export const site = {
   name: "Mustafa Zaki Assagaf",
   title: "Hi, I'm Mustafa",
@@ -8,20 +13,26 @@ export const site = {
   x: import.meta.env.PUBLIC_X ?? "",
 };
 
+export type Img = {
+  src: string;
+  width: number;
+  height: number;
+};
+
 export type Project = {
   title: string;
   desc: string;
   tags: string[];
   href?: string;
   github: string;
-  img?: string;
+  img?: ImageMetadata;
   color: string;
 };
 
 export const showcase: Project[] = [
   {
     title: "Intel 8080 Emulator",
-    img: "/images/intel-8080.png",
+    img: intel8080Img,
     desc: "Cycle-accurate Intel 8080 CPU emulator running Space Invaders in the browser via WASM, with interrupt handling and a live debug panel showing CPU state, disassembly, and memory.",
     tags: ["Rust", "WASM", "Emulator"],
     href: "https://8080.mus.sh",
@@ -30,7 +41,7 @@ export const showcase: Project[] = [
   },
   {
     title: "Pacil Web Service",
-    img: "/images/pemasak.png",
+    img: pemasakImg,
     desc: "Platform-as-a-service built from scratch in Rust for Fasilkom UI. A single binary running the git server, reverse proxy, web dashboard, and Docker infrastructure behind 400+ student deployments.",
     tags: ["Rust", "Docker", "PaaS"],
     github: "https://github.com/mustafasegf/pemasak-infra",
@@ -38,7 +49,7 @@ export const showcase: Project[] = [
   },
   {
     title: "CUDA 100 Days",
-    img: "/images/cuda-100-days.png",
+    img: cudaImg,
     desc: "100 days of CUDA kernel programming, one kernel a day: vector ops, image processing, and PMPP book exercises, all logged day by day on real GPU hardware.",
     tags: ["CUDA", "C++", "GPU"],
     github: "https://github.com/mustafasegf/cuda-100-days-challange",

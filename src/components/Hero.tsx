@@ -1,11 +1,8 @@
-import { useState } from "react";
-import { site } from "@/data/site";
+import { site, type Img } from "@/data/site";
 import { brutalButton } from "@/components/brutal";
 import { ArrowDownIcon, MailIcon } from "@/components/icons";
 
-export function Hero() {
-  const [shaded, setShaded] = useState(false);
-
+export function Hero({ illustration }: { illustration: Img }) {
   return (
     <section id="top" className="grid border-b-2 md:grid-cols-12">
       <div className="flex flex-col justify-center gap-6 px-5 py-14 sm:px-10 md:col-span-7 md:py-20 lg:px-16">
@@ -32,18 +29,19 @@ export function Hero() {
       <div className="flex flex-col items-center justify-center gap-4 border-t-2 bg-brand-yellow px-6 py-12 md:col-span-5 md:border-t-0 md:border-l-2">
         <div className="relative w-full max-w-sm sm:max-w-md">
           <img
-            src="/images/hero-illustration.png"
+            src={illustration.src}
             alt="Cartoon avatar of Mustafa surrounded by TypeScript, Rust, and Go stickers"
-            width="603"
-            height="641"
+            width={illustration.width}
+            height={illustration.height}
             loading="eager"
             className="w-full"
           />
           {/* viewBox matches the illustration's pixel size so the glasses stay on the eyes at any scale */}
           <svg
+            data-shade
             aria-hidden="true"
             viewBox="0 0 603 641"
-            className={`pointer-events-none absolute inset-0 h-full w-full select-none transition-opacity duration-300 ${shaded ? "opacity-100" : "opacity-0"}`}
+            className="pointer-events-none absolute inset-0 h-full w-full select-none opacity-0 transition-opacity duration-300"
           >
             <text x="277" y="352" fontSize="105" textAnchor="middle" dominantBaseline="central">
               🕶
@@ -53,10 +51,10 @@ export function Hero() {
 
         <button
           type="button"
-          onClick={() => setShaded((s) => !s)}
+          data-shade-toggle
           className={brutalButton({ tone: "outline", shape: "pill", className: "h-11 px-5" })}
         >
-          {shaded ? "Remove Shade" : "Add Shade"} 🕶
+          <span data-shade-label>Add Shade</span> 🕶
         </button>
       </div>
     </section>

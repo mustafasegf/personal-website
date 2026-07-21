@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { MenuIcon, MoonIcon, SunIcon } from "@/components/icons";
 
 const links = [
@@ -7,14 +6,7 @@ const links = [
   { href: "#about", label: "About" },
 ];
 
-function toggleTheme() {
-  const dark = document.documentElement.classList.toggle("dark");
-  localStorage.setItem("theme", dark ? "dark" : "light");
-}
-
 export function Nav() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
   return (
     <header className="sticky top-0 z-50 border-b-2 bg-background">
       <nav className="flex items-stretch">
@@ -35,11 +27,10 @@ export function Nav() {
         <div className="ml-auto flex items-stretch">
           <button
             type="button"
-            onClick={toggleTheme}
+            data-theme-toggle
             aria-label="Toggle dark mode"
             className="flex cursor-pointer items-center border-l-2 px-4 hover:bg-muted"
           >
-            {/* icon visibility must stay CSS-driven: theme state isn't known at SSR time */}
             <SunIcon className="hidden size-5 dark:block" />
             <MoonIcon className="size-5 dark:hidden" />
           </button>
@@ -53,9 +44,9 @@ export function Nav() {
 
           <button
             type="button"
-            onClick={() => setMenuOpen((open) => !open)}
+            data-menu-toggle
             aria-label="Open menu"
-            aria-expanded={menuOpen}
+            aria-expanded="false"
             className="flex cursor-pointer items-center border-l-2 px-4 hover:bg-muted sm:hidden"
           >
             <MenuIcon />
@@ -63,24 +54,22 @@ export function Nav() {
         </div>
       </nav>
 
-      {menuOpen && (
-        <div className="border-t-2 sm:hidden">
-          <ul onClick={() => setMenuOpen(false)}>
-            {links.map(({ href, label }) => (
-              <li key={href}>
-                <a href={href} className="block border-b px-4 py-3 text-sm hover:bg-muted">
-                  {label}
-                </a>
-              </li>
-            ))}
-            <li>
-              <a href="#contact" className="block bg-primary px-4 py-3 text-sm font-medium text-primary-foreground">
-                Contact Me
+      <div data-menu className="hidden border-t-2 sm:hidden">
+        <ul>
+          {links.map(({ href, label }) => (
+            <li key={href}>
+              <a href={href} className="block border-b px-4 py-3 text-sm hover:bg-muted">
+                {label}
               </a>
             </li>
-          </ul>
-        </div>
-      )}
+          ))}
+          <li>
+            <a href="#contact" className="block bg-primary px-4 py-3 text-sm font-medium text-primary-foreground">
+              Contact Me
+            </a>
+          </li>
+        </ul>
+      </div>
     </header>
   );
 }

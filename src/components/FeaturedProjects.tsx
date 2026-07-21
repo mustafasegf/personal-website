@@ -1,9 +1,9 @@
-import { showcase } from "@/data/site";
+import { showcase, type Img } from "@/data/site";
 import { brutalButton } from "@/components/brutal";
 import { TagBadge } from "@/components/TagBadge";
 import { ExternalLinkIcon, GitHubIcon } from "@/components/icons";
 
-export function FeaturedProjects() {
+export function FeaturedProjects({ images }: { images: Record<string, Img> }) {
   return (
     <section id="projects" className="scroll-mt-16 border-b-2">
       <h2 className="px-5 py-10 text-center text-2xl font-semibold sm:text-3xl">
@@ -17,8 +17,10 @@ export function FeaturedProjects() {
             className={`flex flex-col gap-4 p-6 sm:p-8 ${p.color} ${i > 0 ? "border-t-2 md:border-t-0 md:border-l-2" : ""}`}
           >
             <img
-              src={p.img}
+              src={images[p.title]?.src}
               alt={`Screenshot of ${p.title}`}
+              width={images[p.title]?.width}
+              height={images[p.title]?.height}
               loading="lazy"
               className="card-brutal aspect-video w-full bg-background object-cover object-top"
             />

@@ -47,29 +47,15 @@ const domain = import.meta.env.DOMAIN ?? "https://mustafasegf.com";
   </head>
 
   <body>
-    <Nav client:load />
+    <Nav />
     <main>
       <slot />
     </main>
     <Footer />
-    <ScrollToTop client:load />
+    <ScrollToTop />
 
     <script>
-      import { fastScrollTo } from "@/lib/scroll";
-
-      // native smooth scroll has no speed control and crawls over long distances
-      document.addEventListener("click", (e) => {
-        const anchor = (e.target as Element).closest?.('a[href^="#"]');
-        const target = anchor && document.querySelector(anchor.getAttribute("href")!);
-        if (!target) return;
-
-        e.preventDefault();
-        history.pushState(null, "", anchor.getAttribute("href"));
-
-        const margin = parseFloat(getComputedStyle(target).scrollMarginTop) || 0;
-        // recompute the target each frame: lazy-loaded images shift the layout mid-scroll
-        fastScrollTo(() => target.getBoundingClientRect().top + scrollY - margin);
-      });
+      import "@/scripts/site";
     </script>
   </body>
 </html>
