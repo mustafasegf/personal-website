@@ -1,7 +1,7 @@
 ---
 import "@/styles/global.css";
-import Nav from "@/components/Nav.astro";
-import Footer from "@/components/Footer.astro";
+import { Nav } from "@/components/Nav";
+import { Footer } from "@/components/Footer";
 import { site } from "@/data/site";
 
 const domain = import.meta.env.DOMAIN ?? "https://mustafasegf.com";
@@ -37,20 +37,10 @@ const domain = import.meta.env.DOMAIN ?? "https://mustafasegf.com";
   </head>
 
   <body>
-    <Nav />
+    <Nav client:load />
     <main>
       <slot />
     </main>
     <Footer />
-
-    <script>
-      // Theme toggle: light by default, remembers when the user switches
-      document.querySelectorAll("[data-theme-toggle]").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const dark = document.documentElement.classList.toggle("dark");
-          localStorage.setItem("theme", dark ? "dark" : "light");
-        });
-      });
-    </script>
   </body>
 </html>
