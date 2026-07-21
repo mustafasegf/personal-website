@@ -189,9 +189,21 @@ export interface Experience {
 
 export const experience: Experience[] = [
   {
+    role: "Platform Engineer",
+    company: "AI&",
+    range: "Apr 2026 - Present",
+    href: "https://aiand.com/",
+    bullets: [
+      "Own the reliability of the on-prem GPU server fleet, keeping training and inference workloads running around the clock",
+      "Built end-to-end telemetry with dedicated GPU observability — from hardware metrics to application traces and alerting",
+      "Provisioned and operate the Kubernetes cluster and CI/CD pipelines that power the ML platform",
+      "Automated infrastructure as code with Pulumi and pyinfra for reproducible server provisioning",
+    ],
+  },
+  {
     role: "MLOps Engineer",
     company: "GoPay",
-    range: "Aug 2024 - Present",
+    range: "Aug 2024 - Apr 2026",
     href: "https://gopay.co.id/",
     desc: "Largest e-wallet and financial ecosystem in Indonesia",
     bullets: [
