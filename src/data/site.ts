@@ -8,7 +8,7 @@ export const site = {
   x: import.meta.env.PUBLIC_X ?? "",
 };
 
-export interface Project {
+export type Project = {
   title: string;
   desc: string;
   tags: string[];
@@ -16,7 +16,7 @@ export interface Project {
   github: string;
   img?: string;
   color: string;
-}
+};
 
 export const showcase: Project[] = [
   {
@@ -175,14 +175,14 @@ export const projects: Project[] = [
   },
 ];
 
-export interface Experience {
+export type Experience = {
   role: string;
   company: string;
   range: string;
   href?: string;
   desc?: string;
   bullets: string[];
-}
+};
 
 export const experience: Experience[] = [
   {
