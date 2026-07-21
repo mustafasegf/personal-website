@@ -11,9 +11,11 @@ export function Hero() {
       <div className="flex flex-col justify-center gap-6 px-5 py-14 sm:px-10 md:col-span-7 md:py-20 lg:px-16">
         <p className="text-lg">Hi, my name is</p>
         <h1 className="max-w-xl text-3xl font-medium leading-snug sm:text-4xl lg:text-5xl lg:leading-snug">
-          {site.name}. Backend, Cloud, and System Engineer.
+          {site.name}. MLOps, Platform, and System Engineer.
         </h1>
-        <p className="text-lg">I craft fast, reliable, and secure web application for a living</p>
+        <p className="text-lg">
+          I keep GPU clusters, models, and infrastructure fast and reliable for a living
+        </p>
 
         <div className="mt-2 flex flex-col gap-4 sm:flex-row">
           <a href="#projects" className={brutalButton({ className: "px-8" })}>

@@ -1,7 +1,7 @@
 export const site = {
   name: "Mustafa Zaki Assagaf",
   title: "Hi, I'm Mustafa",
-  description: "Backend, Cloud, and System Engineer. I craft fast, reliable, and secure web application for a living.",
+  description: "MLOps, Platform, and System Engineer. I keep GPU clusters, models, and infrastructure fast and reliable for a living.",
   email: "mustafa.segf@gmail.com",
   github: "https://github.com/mustafasegf",
   linkedin: "https://linkedin.com/in/mustafa-assagaf",
