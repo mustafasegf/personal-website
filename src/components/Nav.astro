@@ -1,0 +1,105 @@
+---
+const links = [
+  { href: "#projects", label: "Projects" },
+  { href: "#experience", label: "Experience" },
+  { href: "#about", label: "About" },
+];
+---
+
+<header class="sticky top-0 z-50 border-b-2 bg-background">
+  <nav class="flex items-stretch">
+    <a href="#top" class="flex items-center border-r-2 px-4 py-4 text-sm font-bold tracking-wide sm:px-6">
+      MUSTAFA
+    </a>
+
+    <ul class="hidden items-stretch sm:flex">
+      {
+        links.map(({ href, label }) => (
+          <li class="flex">
+            <a
+              href={href}
+              class="flex items-center px-5 text-sm hover:underline hover:underline-offset-4"
+            >
+              {label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="ml-auto flex items-stretch">
+      <button
+        type="button"
+        data-theme-toggle
+        aria-label="Toggle dark mode"
+        class="flex cursor-pointer items-center border-l-2 px-4 hover:bg-muted"
+      >
+        <!-- sun (shown in dark mode) -->
+        <svg class="hidden size-5 dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+        </svg>
+        <!-- moon (shown in light mode) -->
+        <svg class="size-5 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+        </svg>
+      </button>
+
+      <a
+        href="#contact"
+        class="hidden items-center border-l-2 bg-primary px-6 text-sm font-medium text-primary-foreground hover:bg-primary/85 sm:flex"
+      >
+        Contact Me
+      </a>
+
+      <button
+        type="button"
+        data-menu-toggle
+        aria-label="Open menu"
+        aria-expanded="false"
+        class="flex cursor-pointer items-center border-l-2 px-4 hover:bg-muted sm:hidden"
+      >
+        <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <path d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div data-menu class="hidden border-t-2 sm:hidden">
+    <ul>
+      {
+        links.map(({ href, label }) => (
+          <li>
+            <a href={href} class="block border-b px-4 py-3 text-sm hover:bg-muted">
+              {label}
+            </a>
+          </li>
+        ))
+      }
+      <li>
+        <a href="#contact" class="block bg-primary px-4 py-3 text-sm font-medium text-primary-foreground">
+          Contact Me
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<script>
+  const toggle = document.querySelector("[data-menu-toggle]")!;
+  const menu = document.querySelector("[data-menu]")!;
+
+  toggle.addEventListener("click", () => {
+    const open = menu.classList.toggle("hidden");
+    toggle.setAttribute("aria-expanded", String(!open));
+  });
+
+  menu.querySelectorAll("a").forEach((a) =>
+    a.addEventListener("click", () => {
+      menu.classList.add("hidden");
+      toggle.setAttribute("aria-expanded", "false");
+    })
+  );
+</script>

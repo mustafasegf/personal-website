@@ -1,0 +1,106 @@
+---
+import { showcase, projects } from "@/data/site";
+import { Badge } from "@/components/ui/badge";
+
+const githubIcon = `<svg class="size-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55 0-.27-.01-1.17-.02-2.12-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.75 2.69 1.25 3.34.95.1-.74.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.16-1.18 3.16-1.18.63 1.59.24 2.76.12 3.05.74.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.67.41.35.78 1.05.78 2.12 0 1.53-.01 2.76-.01 3.14 0 .3.2.67.8.55A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>`;
+const externalIcon = `<svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>`;
+---
+
+<section id="projects" class="scroll-mt-16 border-b-2">
+  <h2 class="px-5 py-10 text-center text-2xl font-semibold sm:text-3xl">Stuff that I have built</h2>
+
+  <!-- Featured: full-bleed colored panels -->
+  <div class="grid border-t-2 md:grid-cols-3">
+    {
+      showcase.map((p, i) => (
+        <article
+          class:list={[
+            "flex flex-col gap-4 p-6 sm:p-8",
+            p.color,
+            i > 0 && "border-t-2 md:border-t-0 md:border-l-2",
+          ]}
+        >
+          <img
+            src={p.img}
+            alt={`Screenshot of ${p.title}`}
+            loading="lazy"
+            class="card-brutal aspect-video w-full bg-background object-cover object-top"
+          />
+          <div class="flex flex-wrap gap-2">
+            {p.tags.map((tag) => (
+              <Badge className="rounded-full border-2 border-border bg-background px-3 py-1 text-foreground">
+                {tag}
+              </Badge>
+            ))}
+          </div>
+          <h3 class="text-xl font-semibold">{p.title}</h3>
+          <p class="text-sm leading-relaxed">{p.desc}</p>
+          <div class="mt-auto flex gap-3 pt-2">
+            <a
+              href={p.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-brutal inline-flex h-11 flex-1 items-center justify-center gap-2 bg-primary text-sm font-medium text-primary-foreground"
+            >
+              Open
+              <Fragment set:html={externalIcon} />
+            </a>
+            <a
+              href={p.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${p.title} on GitHub`}
+              class="btn-brutal inline-flex size-11 shrink-0 items-center justify-center bg-primary text-primary-foreground"
+            >
+              <Fragment set:html={githubIcon} />
+            </a>
+          </div>
+        </article>
+      ))
+    }
+  </div>
+
+  <!-- Grid of smaller cards -->
+  <div class="border-t-2 px-5 py-12 sm:px-10">
+    <h2 class="pb-10 text-center text-2xl font-semibold sm:text-3xl">Other interesting projects</h2>
+    <div class="mx-auto grid max-w-6xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        projects.map((p) => (
+          <article class:list={["card-brutal flex flex-col gap-3 p-5", p.color]}>
+            <h3 class="text-lg font-semibold">{p.title}</h3>
+            <div class="flex flex-wrap gap-2">
+              {p.tags.map((tag) => (
+                <Badge className="rounded-full border-2 border-border bg-background px-3 py-0.5 text-foreground">
+                  {tag}
+                </Badge>
+              ))}
+            </div>
+            <p class="text-sm leading-relaxed">{p.desc}</p>
+            <div class="mt-auto flex gap-2 pt-2">
+              {p.href && (
+                <a
+                  href={p.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Open ${p.title}`}
+                  class="btn-brutal inline-flex size-10 items-center justify-center bg-primary text-primary-foreground"
+                >
+                  <Fragment set:html={externalIcon} />
+                </a>
+              )}
+              <a
+                href={p.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${p.title} on GitHub`}
+                class="btn-brutal inline-flex size-10 items-center justify-center bg-primary text-primary-foreground"
+              >
+                <Fragment set:html={githubIcon} />
+              </a>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

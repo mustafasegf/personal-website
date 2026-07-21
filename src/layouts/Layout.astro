@@ -1,0 +1,56 @@
+---
+import "@/styles/global.css";
+import Nav from "@/components/Nav.astro";
+import Footer from "@/components/Footer.astro";
+import { site } from "@/data/site";
+
+const domain = import.meta.env.DOMAIN ?? "https://mustafasegf.com";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>{site.title}</title>
+    <meta name="description" content={site.description} />
+
+    <meta property="og:title" content={site.title} />
+    <meta property="og:description" content={site.description} />
+    <meta property="og:image" content={domain + "/images/hero-illustration.png"} />
+    <meta property="og:url" content={domain} />
+    <meta property="og:type" content="website" />
+
+    <meta property="twitter:title" content={site.title} />
+    <meta property="twitter:description" content={site.description} />
+    <meta property="twitter:card" content="summary" />
+    <meta name="twitter:image" content={domain + "/images/hero-illustration.png"} />
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <!-- Set theme before paint: light by default, dark only when the user chose it -->
+    <script is:inline>
+      if (localStorage.getItem("theme") === "dark") {
+        document.documentElement.classList.add("dark");
+      }
+    </script>
+  </head>
+
+  <body>
+    <Nav />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+
+    <script>
+      // Theme toggle: light by default, remembers when the user switches
+      document.querySelectorAll("[data-theme-toggle]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const dark = document.documentElement.classList.toggle("dark");
+          localStorage.setItem("theme", dark ? "dark" : "light");
+        });
+      });
+    </script>
+  </body>
+</html>
