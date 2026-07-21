@@ -11,6 +11,58 @@
       let
         pkgs = nixpkgs.legacyPackages.${system};
 
+        # PUBLIC_* links live in .env (gitignored). Pass them into the build with:
+        #   set -a; source .env; set +a; nix build .#dockerImage --impure
+        # Pure builds fall back to empty strings.
+        envOr = name: let v = builtins.getEnv name; in if v == "" then "" else v;
+        siteEnv = {
+          DOMAIN = envOr "DOMAIN";
+          PUBLIC_EMAIL = envOr "PUBLIC_EMAIL";
+          PUBLIC_GITHUB = envOr "PUBLIC_GITHUB";
+          PUBLIC_LINKEDIN = envOr "PUBLIC_LINKEDIN";
+          PUBLIC_X = envOr "PUBLIC_X";
+        };
+
+        # Per-system because node_modules contains platform binaries (tailwind oxide, esbuild).
+        # To fill in a new system: nix build .#nodeModules and copy the "got:" hash.
+        depsHashes = {
+          aarch64-darwin = "sha256-626qjRgGbP5WeJ0HKz9hKUIWBdRlg6ReFotKaORwPpM=";
+          x86_64-linux = "";
+          aarch64-linux = "";
+          x86_64-darwin = "";
+        };
+
+        # Fixed-output derivation: network is allowed here even in pure sandboxed
+        # builds, so the app build below stays fully offline.
+        nodeModules = pkgs.stdenv.mkDerivation {
+          pname = "personal-web-node-modules";
+          version = "1.0.0";
+
+          dontUnpack = true;
+          dontFixup = true;
+          dontPatchShebangs = true;
+
+          nativeBuildInputs = [ pkgs.bun pkgs.cacert ];
+
+          buildPhase = ''
+            export HOME=$TMPDIR
+            cp ${./package.json} package.json
+            cp ${./bun.lock} bun.lock
+            bun install --frozen-lockfile --no-progress --ignore-scripts --dns-result-order=ipv4first
+          '';
+
+          installPhase = ''
+            mkdir -p $out
+            cp -r node_modules $out/node_modules
+          '';
+
+          outputHashAlgo = "sha256";
+          outputHashMode = "recursive";
+          outputHash =
+            let h = depsHashes.${system} or ""; in
+            if h == "" then pkgs.lib.fakeHash else h;
+        };
+
         appBundle = pkgs.stdenv.mkDerivation {
           pname = "bun-app-bundle";
           version = "1.0.0";
@@ -19,30 +71,24 @@
 
           nativeBuildInputs = [ pkgs.bun ];
 
+          env = siteEnv;
+
           dontConfigure = true;
-          dontBuild = true;
           dontCheck = true;
 
-          installPhase = ''
-            BUILD_DIR=$(mktemp -d)
+          buildPhase = ''
+            export HOME=$TMPDIR
 
-            cp ${./astro.config.mjs} $BUILD_DIR/astro.config.mjs
-            cp ${./tsconfig.json} $BUILD_DIR/tsconfig.json
-            cp ${./package.json} $BUILD_DIR/package.json
-            cp ${./bun.lock} $BUILD_DIR/bun.lock
-            cp -r ${./src} $BUILD_DIR/src
-            cp -r ${./public} $BUILD_DIR/public
+            cp -r ${nodeModules}/node_modules node_modules
+            chmod -R u+w node_modules
 
-            pushd $BUILD_DIR
-
-            ASTRO_TELEMETRY_DISABLED=1 bun install --frozen-lockfile --dns-result-order=ipv4first
             ASTRO_TELEMETRY_DISABLED=1 bun run build
+          '';
 
+          installPhase = ''
             mkdir -p $out/app
             cp -r dist $out/app/dist
             cp src/index.ts $out/app/index.ts
-
-            popd
           '';
         };
       in
@@ -53,6 +99,9 @@
             dive
           ];
         };
+
+        packages.nodeModules = nodeModules;
+        packages.app = appBundle;
 
         packages.default = pkgs.dockerTools.buildImage {
           name = "personal-web";

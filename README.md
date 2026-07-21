@@ -29,8 +29,15 @@ bun run serve          # serve dist/ with Bun
 
 ## Docker via Nix
 
+Dependencies come from a fixed-output derivation, so the site build itself runs
+fully sandboxed with no network. On a new system, `nix build .#nodeModules`
+fails once and prints the hash to fill into `depsHashes` in `flake.nix`.
+
 ```sh
-nix build .#dockerImage
+set -a; source .env; set +a        # bake your PUBLIC_* links into the page
+nix build .#dockerImage --impure
 docker load < result
 docker run -p 3000:3000 personal-web:latest
 ```
+
+Without `--impure` the build stays pure and the social/email links render empty.
