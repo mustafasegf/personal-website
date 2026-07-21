@@ -8,8 +8,8 @@ export function About() {
         <p>
           My name is Mustafa and I love building things end to end. These days my focus is MLOps
           and platform engineering: GPU clusters, Kubernetes, and the plumbing that keeps models
-          training and serving reliably. I still do backend and frontend engineering, work with
-          cloud on GCP and AWS, and play with system engineering projects.
+          training and serving reliably. I'm also able to do backend and frontend engineering,
+          work with cloud on GCP and AWS, and play with system engineering projects.
         </p>
         <p>
           Right now I'm a platform engineer at{" "}
