@@ -1,11 +1,36 @@
-# Astro + React Example
+# mustafasegf.com
 
+My personal website. Neobrutalist design straight from Figma, built to be light and fast.
+
+![Screenshot of the site](./public/images/og.png)
+
+## Stack
+
+- [Astro](https://astro.build) with React islands, only the interactive parts ship JS
+- [Tailwind CSS v4](https://tailwindcss.com) with a CSS-first theme
+- [shadcn/ui](https://ui.shadcn.com) on Base UI
+- Light mode by default with a persisted dark-mode toggle
+- Respects `prefers-reduced-motion`
+
+## Develop
+
+```sh
+cp .env.example .env   # fill in your links
+bun install
+bun run dev
 ```
-npm init astro -- --template framework-react
+
+## Build
+
+```sh
+bun run build          # static site in dist/
+bun run serve          # serve dist/ with Bun
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/framework-react)
+## Docker via Nix
 
-This example showcases Astro working with [React](https://reactjs.org/).
-
-Write your React components as `.jsx` or `.tsx` files in your project.
+```sh
+nix build .#dockerImage
+docker load < result
+docker run -p 3000:3000 personal-web:latest
+```
