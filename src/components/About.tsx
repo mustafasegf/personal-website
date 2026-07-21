@@ -1,5 +1,3 @@
-import { site } from "@/data/site";
-
 const link = "font-semibold underline underline-offset-4";
 
 export function About() {
@@ -8,9 +6,10 @@ export function About() {
       <div className="mx-auto max-w-3xl space-y-6 text-center">
         <h2 className="text-2xl font-semibold sm:text-3xl">About Me</h2>
         <p>
-          My name is Mustafa and I love to do web development. I mostly do backend engineering, but
-          I also can do frontend engineering. Other than that, I also deal with cloud engineering
-          using GCP and AWS. I've also played with system engineering projects.
+          My name is Mustafa and I love building things end to end. These days my focus is MLOps
+          and platform engineering: GPU clusters, Kubernetes, and the plumbing that keeps models
+          training and serving reliably. I still do backend and frontend engineering, work with
+          cloud on GCP and AWS, and play with system engineering projects.
         </p>
         <p>
           Right now I'm a platform engineer at{" "}
@@ -18,11 +17,11 @@ export function About() {
             AI&
           </a>
           , keeping on-prem GPU servers reliable with end-to-end telemetry, Kubernetes, and
-          infrastructure as code. You can also checkout my latest project,{" "}
-          <a href={`${site.github}/neoman`} target="_blank" rel="noopener noreferrer" className={link}>
-            Neoman
+          infrastructure as code. You can also checkout my latest project, the{" "}
+          <a href="https://8080.mus.sh" target="_blank" rel="noopener noreferrer" className={link}>
+            Intel 8080 emulator
           </a>
-          ! Postman-like application on the terminal.
+          . It runs Space Invaders, and you can try it right in your browser!
         </p>
       </div>
     </section>
