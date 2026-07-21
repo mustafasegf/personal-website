@@ -2,10 +2,10 @@ export const site = {
   name: "Mustafa Zaki Assagaf",
   title: "Hi, I'm Mustafa",
   description: "MLOps, Platform, and System Engineer. I keep GPU clusters, models, and infrastructure fast and reliable for a living.",
-  email: "mustafa.segf@gmail.com",
-  github: "https://github.com/mustafasegf",
-  linkedin: "https://linkedin.com/in/mustafa-assagaf",
-  x: "https://x.com/mustafasegf",
+  email: import.meta.env.PUBLIC_EMAIL ?? "",
+  github: import.meta.env.PUBLIC_GITHUB ?? "",
+  linkedin: import.meta.env.PUBLIC_LINKEDIN ?? "",
+  x: import.meta.env.PUBLIC_X ?? "",
 };
 
 export interface Project {

@@ -63,7 +63,7 @@ export function Contact() {
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-3"
               >
-                <span className={brutalButton({ size: "icon-lg", shape: "pill" })}>
+                <span className={brutalButton({ tone: "outline", size: "icon-lg", shape: "pill" })}>
                   <Icon />
                 </span>
                 <span className="text-sm font-medium group-hover:underline group-hover:underline-offset-4">

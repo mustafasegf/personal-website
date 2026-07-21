@@ -15,11 +15,15 @@ export function Experience() {
       </div>
 
       <div className="px-5 py-12 sm:px-10 md:col-span-8 lg:col-span-9">
-        <ol className="relative ml-2 space-y-10 border-l-2">
-          {experience.map((e) => (
+        <ol className="ml-2 space-y-10">
+          {experience.map((e, i) => (
             <li key={`${e.company}-${e.range}`} className="relative pl-8">
+              {/* per-item segments end the line at the last dot; -bottom-11 bridges the space-y-10 gap to the next dot */}
+              {i < experience.length - 1 && (
+                <span className="absolute top-1 -left-0.5 w-0.5 -bottom-11 bg-border" aria-hidden="true" />
+              )}
               <span
-                className="absolute top-1 -left-2 size-4 rounded-full border-2 border-border bg-brand-salmon"
+                className="absolute top-1 -left-2 size-4 -translate-x-px rounded-full border-2 border-border bg-brand-salmon"
                 aria-hidden="true"
               />
               <time className="text-sm text-muted-foreground">{e.range}</time>

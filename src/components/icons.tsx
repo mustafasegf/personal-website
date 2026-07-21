@@ -68,6 +68,14 @@ export function ArrowDownIcon({ className = "size-4" }: IconProps) {
   );
 }
 
+export function ArrowUpIcon({ className = "size-5" }: IconProps) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" {...stroke} aria-hidden="true">
+      <path d="M12 19V5m0 0-6 6m6-6 6 6" />
+    </svg>
+  );
+}
+
 export function SunIcon({ className = "size-5" }: IconProps) {
   return (
     <svg className={className} viewBox="0 0 24 24" {...stroke} aria-hidden="true">
