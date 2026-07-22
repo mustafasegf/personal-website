@@ -63,7 +63,7 @@ export function Nav() {
         <ul>
           {links.map(({ href, label }) => (
             <li key={href}>
-              <a href={href} className="block border-b px-4 py-4 text-sm hover:bg-muted">
+              <a href={href} className="block border-b px-4 py-4 text-sm hover:bg-muted font-medium">
                 {label}
               </a>
             </li>

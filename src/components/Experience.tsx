@@ -34,7 +34,7 @@ export function Experience() {
                     href={e.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="underline underline-offset-4 hover:decoration-brand-salmon"
+                    className="underline decoration-2 underline-offset-4 hover:decoration-brand-salmon"
                   >
                     @{e.company}
                   </a>

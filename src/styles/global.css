@@ -203,7 +203,7 @@
     @apply border-border outline-ring/50;
   }
   html {
-    @apply font-sans antialiased;
+    @apply font-sans;
     font-synthesis: none;
     color-scheme: light;
   }
