@@ -5,7 +5,7 @@ import { ExternalLinkIcon, GitHubIcon } from "@/components/icons";
 
 function ProjectCard({ project }: { project: Project }) {
   return (
-    <article data-tags={project.tags.join("|")} className={`card-brutal flex flex-col gap-3 p-5 ${project.color}`}>
+    <article data-tags={project.tags.join("|")} className={`card-brutal flex flex-col gap-4 p-6 ${project.color}`}>
       <h3 className="font-heading text-balance text-lg font-semibold leading-tight tracking-item-heading">{project.title}</h3>
       <div className="flex flex-wrap gap-2">
         {project.tags.map((tag) => (
@@ -41,11 +41,11 @@ function ProjectCard({ project }: { project: Project }) {
 
 export function ProjectGrid() {
   return (
-    <section className="border-b-2 px-5 py-12 sm:px-10">
-      <h2 className="pb-2 text-center font-heading text-balance text-2xl font-semibold leading-section-heading tracking-section-heading sm:text-3xl">
+    <section className="border-b-2 px-6 py-12 sm:px-10">
+      <h2 className="text-center font-heading text-balance text-2xl font-semibold leading-section-heading tracking-section-heading sm:text-3xl">
         Other interesting projects
       </h2>
-      <div className="flex h-12 items-center justify-center text-center text-sm">
+      <div className="flex h-12 items-center justify-center text-center text-sm mb-4">
         <p data-filter-helper className="text-muted-foreground">
           Click a tag to filter, click it again to clear it.
         </p>

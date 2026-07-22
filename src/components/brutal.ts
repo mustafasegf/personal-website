@@ -13,7 +13,7 @@ export const brutalButton = cva(
       size: {
         md: "h-12 px-6",
         icon: "size-10",
-        "icon-lg": "size-11",
+        "icon-lg": "size-12",
       },
       shape: {
         square: "",

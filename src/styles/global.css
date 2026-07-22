@@ -161,7 +161,7 @@
 
 /* Neobrutalist press effect: shadow collapses as the element shifts into it */
 @utility btn-brutal {
-  @apply rounded-md border-2 border-border shadow-brutal transition-[translate,box-shadow] duration-150 hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-brutal-sm active:translate-x-1 active:translate-y-1 active:shadow-none;
+  @apply rounded-md border-2 border-border shadow-brutal transition-[translate,box-shadow] duration-150 hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-brutal-sm active:translate-x-2 active:translate-y-2 active:shadow-none;
 }
 
 @utility card-brutal {
@@ -171,13 +171,13 @@
 /* Keep compact controls visually small while their non-overlapping hit box stays usable. */
 .touch-target {
   min-width: 2.5rem;
-  min-height: 2.5rem;
+  min-height: 1rem;
 }
 
 @media (pointer: coarse) {
   .touch-target {
     min-width: 2.75rem;
-    min-height: 2.75rem;
+    min-height: 2rem;
   }
 }
 

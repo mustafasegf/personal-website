@@ -1,7 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 
 const tagClass =
-  "h-auto rounded-full border-2 border-border bg-background px-3 py-0.5 text-xs font-semibold text-foreground";
+  "h-auto rounded-full border-2 border-border bg-background px-4 py-0.5 text-xs font-semibold text-foreground";
 
 export function TagBadge({ tag }: { tag: string }) {
   return (

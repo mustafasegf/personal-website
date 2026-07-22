@@ -17,7 +17,7 @@ export function Nav() {
         <ul className="hidden items-stretch sm:flex">
           {links.map(({ href, label }) => (
             <li key={href} className="flex">
-              <a href={href} className="flex items-center px-5 text-sm hover:underline hover:underline-offset-4">
+              <a href={href} className="flex items-center px-6 text-sm hover:underline hover:underline-offset-4">
                 {label}
               </a>
             </li>
@@ -31,8 +31,8 @@ export function Nav() {
             aria-label="Toggle dark mode"
             className="flex cursor-pointer items-center border-l-2 px-4 hover:bg-muted"
           >
-            <SunIcon className="hidden size-5 dark:block" />
-            <MoonIcon className="size-5 dark:hidden" />
+            <SunIcon className="hidden size-6 dark:block" />
+            <MoonIcon className="size-6 dark:hidden" />
           </button>
 
           <a
@@ -63,13 +63,13 @@ export function Nav() {
         <ul>
           {links.map(({ href, label }) => (
             <li key={href}>
-              <a href={href} className="block border-b px-4 py-3 text-sm hover:bg-muted">
+              <a href={href} className="block border-b px-4 py-4 text-sm hover:bg-muted">
                 {label}
               </a>
             </li>
           ))}
           <li>
-            <a href="#contact" className="block bg-canvas-action px-4 py-3 text-sm font-medium text-canvas-action-foreground">
+            <a href="#contact" className="block bg-canvas-action px-4 py-4 text-sm font-medium text-canvas-action-foreground">
               Contact Me
             </a>
           </li>
