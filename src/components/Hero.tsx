@@ -7,7 +7,7 @@ export function Hero({ illustration }: { illustration: Img }) {
     <section id="top" className="grid border-b-2 md:grid-cols-12">
       <div className="flex flex-col justify-center gap-4 px-5 py-14 sm:px-10 md:col-span-7 md:py-20 lg:px-16">
         <p className="text-lg">Hi, my name is</p>
-        <h1 className="max-w-xl text-3xl font-medium leading-[1.1] tracking-[-0.02em] sm:text-4xl lg:text-5xl">
+        <h1 className="max-w-xl font-heading text-balance text-3xl font-medium leading-display tracking-display sm:text-4xl lg:text-5xl">
           {site.name}. MLOps, Platform, and System Engineer.
         </h1>
         <p className="max-w-[58ch] text-pretty text-lg leading-normal">
@@ -55,7 +55,7 @@ export function Hero({ illustration }: { illustration: Img }) {
           className={brutalButton({
             tone: "outline",
             shape: "pill",
-            className: "h-11 px-5",
+            className: "h-12 px-5",
           })}
         >
           <span className="inline-grid">

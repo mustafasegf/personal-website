@@ -11,6 +11,11 @@
 @theme inline {
     --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
     --font-heading: var(--font-sans);
+    --leading-display: 1.1;
+    --leading-section-heading: 1.15;
+    --tracking-display: -0.02em;
+    --tracking-section-heading: -0.015em;
+    --tracking-item-heading: -0.01em;
     --color-ring: var(--ring);
     --color-input: var(--input);
     --color-border: var(--border);
@@ -207,23 +212,6 @@
   }
   body {
     @apply bg-background text-foreground;
-  }
-
-  h1,
-  h2,
-  h3 {
-    @apply font-heading text-balance;
-  }
-
-  h2 {
-    @apply text-2xl font-semibold sm:text-3xl;
-    line-height: 1.15;
-    letter-spacing: -0.015em;
-  }
-
-  h3 {
-    @apply font-semibold leading-tight;
-    letter-spacing: -0.01em;
   }
 
   a {

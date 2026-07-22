@@ -7,7 +7,9 @@ export function Experience() {
       <div className="space-y-4 border-b-2 bg-brand-yellow px-5 py-12 sm:px-10 md:col-span-4 md:border-r-2 md:border-b-0 lg:col-span-3">
         <div className="md:sticky md:top-24 md:space-y-4">
           <LaptopIcon />
-          <h2>My experiences</h2>
+          <h2 className="font-heading text-balance text-2xl font-semibold leading-section-heading tracking-section-heading sm:text-3xl">
+            My experiences
+          </h2>
           <p className="text-pretty text-sm leading-relaxed">
             List of all of my professional experiences, totalling around 5 years of experience.
           </p>
@@ -25,7 +27,7 @@ export function Experience() {
                 aria-hidden="true"
               />
               <time className="text-sm text-muted-foreground tabular-nums">{e.range}</time>
-              <h3 className="mt-1 text-lg">
+              <h3 className="mt-1 font-heading text-balance text-lg font-semibold leading-tight tracking-item-heading">
                 {e.role}{" "}
                 {e.href ? (
                   <a

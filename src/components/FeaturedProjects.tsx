@@ -6,7 +6,9 @@ import { ExternalLinkIcon, GitHubIcon } from "@/components/icons";
 export function FeaturedProjects({ images }: { images: Record<string, Img> }) {
   return (
     <section id="projects" className="scroll-mt-16 border-b-2">
-      <h2 className="px-5 py-10 text-center">Stuff that I have built</h2>
+      <h2 className="px-5 py-10 text-center font-heading text-balance text-2xl font-semibold leading-section-heading tracking-section-heading sm:text-3xl">
+        Stuff that I have built
+      </h2>
 
       <div className="grid border-t-2 md:grid-cols-3">
         {showcase.map((p, i) => (
@@ -27,11 +29,11 @@ export function FeaturedProjects({ images }: { images: Record<string, Img> }) {
                 <TagBadge key={tag} tag={tag} />
               ))}
             </div>
-            <h3 className="text-xl">{p.title}</h3>
+            <h3 className="font-heading text-balance text-xl font-semibold leading-tight tracking-item-heading">{p.title}</h3>
             <p className="text-pretty text-sm leading-relaxed">{p.desc}</p>
             <div className="mt-auto flex gap-3 pt-2">
               {p.href && (
-                <a href={p.href} target="_blank" rel="noopener noreferrer" className={brutalButton({ className: "h-11 flex-1" })}>
+                <a href={p.href} target="_blank" rel="noopener noreferrer" className={brutalButton({ className: "h-12 flex-1" })}>
                   Open
                   <ExternalLinkIcon />
                 </a>
@@ -43,7 +45,7 @@ export function FeaturedProjects({ images }: { images: Record<string, Img> }) {
                 aria-label={`${p.title} on GitHub`}
                 className={brutalButton({
                   size: "icon-lg",
-                  className: p.href ? "shrink-0" : "h-11 flex-1",
+                  className: p.href ? "shrink-0" : "h-12 flex-1",
                 })}
               >
                 <GitHubIcon />

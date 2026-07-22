@@ -3,8 +3,8 @@ const link = "font-semibold underline underline-offset-4";
 export function About() {
   return (
     <section id="about" className="scroll-mt-16 border-b-2 bg-brand-blue px-5 py-14 sm:px-10">
-      <div className="mx-auto max-w-prose text-center">
-        <h2>About Me</h2>
+      <div className="mx-auto max-w-3xl text-center">
+        <h2 className="font-heading text-balance text-2xl font-semibold leading-section-heading tracking-section-heading sm:text-3xl">About Me</h2>
         <div className="mt-6 space-y-4 leading-relaxed text-pretty">
           <p>
             My name is Mustafa and I love building things end to end. These days my focus is MLOps and platform engineering: GPU clusters,
