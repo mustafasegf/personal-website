@@ -128,12 +128,12 @@
     --secondary-foreground: oklch(0.95 0.005 285);
     --muted: oklch(0.27 0.006 285);
     --muted-foreground: oklch(0.78 0.01 285);
-    --accent: oklch(0.56 0.16 33.6);
+    --accent: oklch(0.56 0.183 33.6);
     --accent-foreground: oklch(0.97 0 0);
     --destructive: oklch(0.704 0.191 22.216);
     --border: oklch(0.85 0.01 285);
     --input: oklch(0.85 0.01 285);
-    --ring: oklch(0.62 0.16 33.6);
+    --ring: oklch(0.68 0.189 33.6);
     --focus-contrast: oklch(0.97 0 0);
     --brutal-shadow-sm: 2px 2px 0px 0px oklch(0.05 0 0);
     --brutal-shadow: 4px 4px 0px 0px oklch(0.05 0 0);
@@ -146,17 +146,18 @@
     --chip-selected: var(--brand-salmon);
     --chip-selected-foreground: oklch(0.97 0 0);
 
-    --brand-yellow: oklch(0.5 0.1 94.7);
-    --brand-pink: oklch(0.45 0.13 334.4);
-    --brand-pink-soft: oklch(0.42 0.08 321.9);
-    --brand-blue: oklch(0.45 0.085 228.8);
-    --brand-green: oklch(0.46 0.11 137.6);
-    --brand-mint: oklch(0.42 0.06 183.4);
-    --brand-tan: oklch(0.44 0.07 68.6);
-    --brand-lemon: oklch(0.46 0.095 109);
-    --brand-lavender: oklch(0.42 0.07 293.1);
-    --brand-rose: oklch(0.46 0.1 9.2);
-    --brand-salmon: oklch(0.56 0.16 33.6);
+    /* Near max sRGB chroma per hue; L >= ~0.5 keeps white body text at AA (4.5:1). */
+    --brand-yellow: oklch(0.55 0.101 94.7);
+    --brand-pink: oklch(0.55 0.208 334.4);
+    --brand-pink-soft: oklch(0.5 0.13 321.9);
+    --brand-blue: oklch(0.55 0.091 228.8);
+    --brand-green: oklch(0.55 0.143 137.6);
+    --brand-mint: oklch(0.52 0.05 183.4);
+    --brand-tan: oklch(0.54 0.088 68.6);
+    --brand-lemon: oklch(0.55 0.107 109);
+    --brand-lavender: oklch(0.52 0.158 293.1);
+    --brand-rose: oklch(0.55 0.187 9.2);
+    --brand-salmon: oklch(0.56 0.183 33.6);
 }
 
 /* Neobrutalist press effect: shadow collapses as the element shifts into it */
