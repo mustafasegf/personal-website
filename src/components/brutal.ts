@@ -19,11 +19,34 @@ export const brutalButton = cva(
         square: "",
         pill: "rounded-full!",
       },
+      width: {
+        auto: "",
+        constrained: "max-w-full",
+        grow: "flex-1",
+        shrink: "shrink-0",
+      },
+      gap: {
+        default: "",
+        wide: "gap-4",
+      },
+      padding: {
+        default: "",
+        wide: "px-8",
+      },
+      placement: {
+        flow: "",
+        scrollTop:
+          "fixed right-6 bottom-6 z-40 hidden shadow-brutal-lg! hover:shadow-brutal! active:shadow-none!",
+      },
     },
     defaultVariants: {
       tone: "solid",
       size: "md",
       shape: "square",
+      width: "auto",
+      gap: "default",
+      padding: "default",
+      placement: "flow",
     },
   },
 );

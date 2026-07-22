@@ -15,11 +15,11 @@ export function Hero({ illustration }: { illustration: Img }) {
         </p>
 
         <div className="mt-4 flex flex-col gap-4 sm:flex-row">
-          <a href="#projects" className={brutalButton({ tone: "canvas", className: "px-8" })}>
+          <a href="#projects" className={brutalButton({ tone: "canvas", padding: "wide" })}>
             Learn More
             <ArrowDownIcon />
           </a>
-          <a href="#contact" className={brutalButton({ tone: "canvasOutline", className: "px-8" })}>
+          <a href="#contact" className={brutalButton({ tone: "canvasOutline", padding: "wide" })}>
             Contact Me
             <MailIcon />
           </a>
@@ -52,11 +52,7 @@ export function Hero({ illustration }: { illustration: Img }) {
         <button
           type="button"
           data-shade-toggle
-          className={brutalButton({
-            tone: "outline",
-            shape: "pill",
-            className: "h-12 px-6",
-          })}
+          className={brutalButton({ tone: "outline", shape: "pill" })}
         >
           <span className="inline-grid">
             <span data-shade-label className="col-start-1 row-start-1">

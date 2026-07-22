@@ -226,9 +226,9 @@
 
   a:focus-visible,
   button:focus-visible {
-    outline: 2px solid var(--focus-contrast);
+    outline: 2px solid var(--ring);
     outline-offset: 2px;
-    box-shadow: 0 0 0 2px var(--ring), var(--tw-shadow);
+    box-shadow: 0 0 0 2px var(--focus-contrast), var(--tw-shadow);
   }
 
   @media (prefers-reduced-motion: reduce) {

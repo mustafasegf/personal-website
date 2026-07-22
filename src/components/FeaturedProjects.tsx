@@ -33,7 +33,7 @@ export function FeaturedProjects({ images }: { images: Record<string, Img> }) {
             <p className="text-pretty text-sm leading-relaxed">{p.desc}</p>
             <div className="mt-auto flex gap-4 pt-2">
               {p.href && (
-                <a href={p.href} target="_blank" rel="noopener noreferrer" className={brutalButton({ className: "h-12 flex-1" })}>
+                <a href={p.href} target="_blank" rel="noopener noreferrer" className={brutalButton({ width: "grow" })}>
                   Open
                   <ExternalLinkIcon />
                 </a>
@@ -43,10 +43,7 @@ export function FeaturedProjects({ images }: { images: Record<string, Img> }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`${p.title} on GitHub`}
-                className={brutalButton({
-                  size: "icon-lg",
-                  className: p.href ? "shrink-0" : "h-12 flex-1",
-                })}
+                className={brutalButton({ size: "icon-lg", width: p.href ? "shrink" : "grow" })}
               >
                 <GitHubIcon />
               </a>

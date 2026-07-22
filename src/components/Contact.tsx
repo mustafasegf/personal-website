@@ -10,7 +10,7 @@ const socials = [
 
 function CopyEmailButton() {
   return (
-    <button type="button" data-copy-email className={brutalButton({ tone: "outline", className: "max-w-full" })}>
+    <button type="button" data-copy-email className={brutalButton({ tone: "outline", width: "constrained" })}>
       <CopyIcon />
       <span className="inline-grid min-w-0">
         <span data-copy-label className="col-start-1 row-start-1 truncate">
@@ -37,7 +37,7 @@ export function Contact() {
         </p>
 
         <div className="mt-8 flex max-w-xl flex-col gap-4 sm:flex-row">
-          <a href={`mailto:${site.email}`} className={brutalButton({ className: "gap-4" })}>
+          <a href={`mailto:${site.email}`} className={brutalButton({ gap: "wide" })}>
             <MailIcon />
             {site.email}
           </a>
