@@ -10,8 +10,8 @@ export function Nav() {
   return (
     <header className="sticky top-0 z-50 border-b-2 bg-background">
       <nav className="flex items-stretch">
-        <a href="#top" className="flex items-center border-r-2 px-4 py-4 text-sm font-bold tracking-wide sm:px-6">
-          MUSTAFA
+        <a href="#top" className="flex items-center border-r-2 px-4 py-4 text-sm font-bold tracking-wide uppercase sm:px-6">
+          Mustafa
         </a>
 
         <ul className="hidden items-stretch sm:flex">

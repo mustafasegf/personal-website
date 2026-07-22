@@ -7,8 +7,8 @@ export function Experience() {
       <div className="space-y-4 border-b-2 bg-brand-yellow px-5 py-12 sm:px-10 md:col-span-4 md:border-r-2 md:border-b-0 lg:col-span-3">
         <div className="md:sticky md:top-24 md:space-y-4">
           <LaptopIcon />
-          <h2 className="text-2xl font-semibold sm:text-3xl">My experiences</h2>
-          <p className="text-sm leading-relaxed">
+          <h2>My experiences</h2>
+          <p className="text-pretty text-sm leading-relaxed">
             List of all of my professional experiences, totalling around 5 years of experience.
           </p>
         </div>
@@ -19,22 +19,20 @@ export function Experience() {
           {experience.map((e, i) => (
             <li key={`${e.company}-${e.range}`} className="relative pl-8">
               {/* per-item segments end the line at the last dot; -bottom-11 bridges the space-y-10 gap to the next dot */}
-              {i < experience.length - 1 && (
-                <span className="absolute top-1 -left-0.5 w-0.5 -bottom-11 bg-border" aria-hidden="true" />
-              )}
+              {i < experience.length - 1 && <span className="absolute top-1 -left-0.5 w-0.5 -bottom-11 bg-border" aria-hidden="true" />}
               <span
                 className="absolute top-1 -left-2 size-4 -translate-x-px rounded-full border-2 border-border bg-brand-salmon"
                 aria-hidden="true"
               />
-              <time className="text-sm text-muted-foreground">{e.range}</time>
-              <h3 className="mt-1 text-lg font-semibold">
+              <time className="text-sm text-muted-foreground tabular-nums">{e.range}</time>
+              <h3 className="mt-1 text-lg">
                 {e.role}{" "}
                 {e.href ? (
                   <a
                     href={e.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="underline decoration-2 underline-offset-4 hover:decoration-brand-salmon"
+                    className="underline underline-offset-4 hover:decoration-brand-salmon"
                   >
                     @{e.company}
                   </a>

@@ -5,16 +5,16 @@ import { ArrowDownIcon, MailIcon } from "@/components/icons";
 export function Hero({ illustration }: { illustration: Img }) {
   return (
     <section id="top" className="grid border-b-2 md:grid-cols-12">
-      <div className="flex flex-col justify-center gap-6 px-5 py-14 sm:px-10 md:col-span-7 md:py-20 lg:px-16">
+      <div className="flex flex-col justify-center gap-4 px-5 py-14 sm:px-10 md:col-span-7 md:py-20 lg:px-16">
         <p className="text-lg">Hi, my name is</p>
-        <h1 className="max-w-xl text-3xl font-medium leading-snug sm:text-4xl lg:text-5xl lg:leading-snug">
+        <h1 className="max-w-xl text-3xl font-medium leading-[1.1] tracking-[-0.02em] sm:text-4xl lg:text-5xl">
           {site.name}. MLOps, Platform, and System Engineer.
         </h1>
-        <p className="text-lg">
+        <p className="max-w-[58ch] text-pretty text-lg leading-normal">
           I keep GPU clusters, models, and infrastructure fast and reliable for a living
         </p>
 
-        <div className="mt-2 flex flex-col gap-4 sm:flex-row">
+        <div className="mt-4 flex flex-col gap-4 sm:flex-row">
           <a href="#projects" className={brutalButton({ className: "px-8" })}>
             Learn More
             <ArrowDownIcon />
@@ -52,7 +52,11 @@ export function Hero({ illustration }: { illustration: Img }) {
         <button
           type="button"
           data-shade-toggle
-          className={brutalButton({ tone: "outline", shape: "pill", className: "h-11 px-5" })}
+          className={brutalButton({
+            tone: "outline",
+            shape: "pill",
+            className: "h-11 px-5",
+          })}
         >
           <span data-shade-label>Add Shade</span> 🕶
         </button>
