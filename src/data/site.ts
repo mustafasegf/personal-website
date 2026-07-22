@@ -186,6 +186,39 @@ export const projects: Project[] = [
   },
 ];
 
+export type SiteLink = {
+  title: string;
+  href: string;
+  desc: string;
+  color: string;
+};
+
+export const otherSites: SiteLink[] = [
+  {
+    title: "Minggu Ini Ngapain",
+    href: "https://blog.mus.sh",
+    desc: "My blog, in Indonesian. Notes, tutorials, and opinions on whatever I've been building or breaking lately.",
+    color: "bg-brand-lemon",
+  },
+  {
+    title: "Missing Semester",
+    href: "http://missing-semester.kambi.ng/",
+    desc: "The classes CS forgot to teach: the shell, git, editors, and the rest of the tooling you actually use every day.",
+    color: "bg-brand-tan",
+  },
+];
+
+export type Friend = {
+  name: string;
+  href: string;
+};
+
+export const friends: Friend[] = [
+  { name: "Stefanus Ndaru", href: "https://stndar.dev" },
+  { name: "Adrian Ardizza", href: "https://ardizza.xyz" },
+  { name: "Andre Pramaditya", href: "https://drepram.com" },
+];
+
 export type Experience = {
   role: string;
   company: string;
