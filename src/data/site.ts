@@ -199,7 +199,7 @@ export const experience: Experience[] = [
   {
     role: "Platform Engineer",
     company: "ai&",
-    range: "Apr 2026 - Present",
+    range: "Apr 2026 – Present",
     href: "https://aiand.com/",
     bullets: [
       "Own the reliability of the on-prem GPU server fleet, keeping training and inference workloads running around the clock",
@@ -211,7 +211,7 @@ export const experience: Experience[] = [
   {
     role: "MLOps Engineer",
     company: "GoPay",
-    range: "Aug 2024 - Apr 2026",
+    range: "Aug 2024 – Apr 2026",
     href: "https://gopay.co.id/",
     desc: "Largest e-wallet and financial ecosystem in Indonesia",
     bullets: [
@@ -224,7 +224,7 @@ export const experience: Experience[] = [
   {
     role: "Platform Engineer",
     company: "University of Indonesia",
-    range: "Nov 2023 - Aug 2024",
+    range: "Nov 2023 – Aug 2024",
     href: "https://cs.ui.ac.id/",
     bullets: [
       "Built an in-house PaaS from scratch in Rust as a single-binary application, capable of 400+ concurrent deployments",
@@ -235,7 +235,7 @@ export const experience: Experience[] = [
   {
     role: "MLOps Engineer",
     company: "Soca AI",
-    range: "Apr 2023 - Nov 2023",
+    range: "Apr 2023 – Nov 2023",
     desc: "AI stealth startup focusing on edge devices",
     bullets: [
       "Developed a high-performance server using Rust and Axum for real-time image processing",
@@ -246,7 +246,7 @@ export const experience: Experience[] = [
   {
     role: "HPC Cluster Admin (SLURM)",
     company: "University of Indonesia",
-    range: "Feb 2023 - Jul 2023",
+    range: "Feb 2023 – Jul 2023",
     href: "https://cs.ui.ac.id/",
     desc: "Faculty of Computer Science",
     bullets: [
@@ -257,7 +257,7 @@ export const experience: Experience[] = [
   {
     role: "Software Engineer",
     company: "Rvere",
-    range: "Sep 2022 - Apr 2023",
+    range: "Sep 2022 – Apr 2023",
     href: "https://rvere.com/",
     desc: "Shopify store speed and performance optimization",
     bullets: [
@@ -269,7 +269,7 @@ export const experience: Experience[] = [
   {
     role: "Backend Engineer",
     company: "SayaKaya",
-    range: "Jan 2022 - Jun 2022",
+    range: "Jan 2022 – Jun 2022",
     href: "https://sayakaya.id/",
     desc: "Mobile mutual funds application",
     bullets: [
@@ -281,7 +281,7 @@ export const experience: Experience[] = [
   {
     role: "DevOps Engineer",
     company: "Fotoyu",
-    range: "Apr 2021 - Oct 2021",
+    range: "Apr 2021 – Oct 2021",
     href: "https://fotoyu.com/",
     desc: "Photo marketplace platform",
     bullets: [

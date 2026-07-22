@@ -1,11 +1,8 @@
 import { Badge } from "@/components/ui/badge";
 
-const tagClass =
-  "h-auto rounded-full border-2 border-border bg-background px-3 py-0.5 text-xs font-semibold text-foreground";
-
 export function TagBadge({ tag }: { tag: string }) {
   return (
-    <Badge variant="outline" className={tagClass}>
+    <Badge variant="outline" size="tag">
       {tag}
     </Badge>
   );
@@ -13,12 +10,15 @@ export function TagBadge({ tag }: { tag: string }) {
 
 export function TagFilterChip({ tag }: { tag: string }) {
   return (
-    <Badge
-      variant="outline"
-      className={`${tagClass} cursor-pointer transition-[background-color,translate] duration-150 hover:-translate-y-0.5 hover:bg-muted aria-pressed:bg-primary aria-pressed:text-primary-foreground aria-pressed:hover:bg-primary/85`}
-      render={<button type="button" data-tag={tag} aria-pressed={false} />}
+    <button
+      type="button"
+      data-tag={tag}
+      aria-pressed={false}
+      className="tag-filter-control touch-target inline-flex cursor-pointer items-center justify-center rounded-full"
     >
-      {tag}
-    </Badge>
+      <Badge variant="outline" size="tag" behavior="filter">
+        {tag}
+      </Badge>
+    </button>
   );
 }

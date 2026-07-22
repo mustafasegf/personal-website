@@ -8,16 +8,16 @@ const links = [
 
 export function Nav() {
   return (
-    <header className="sticky top-0 z-50 border-b-2 bg-background">
+    <header className="sticky top-0 z-50 isolate border-b-2 bg-background">
       <nav className="flex items-stretch">
-        <a href="#top" className="flex items-center border-r-2 px-4 py-4 text-sm font-bold tracking-wide sm:px-6">
-          MUSTAFA
+        <a href="#top" className="flex items-center border-r-2 px-4 py-4 text-sm font-bold tracking-wide uppercase sm:px-6">
+          Mustafa
         </a>
 
         <ul className="hidden items-stretch sm:flex">
           {links.map(({ href, label }) => (
             <li key={href} className="flex">
-              <a href={href} className="flex items-center px-5 text-sm hover:underline hover:underline-offset-4">
+              <a href={href} className="flex items-center px-6 text-sm hover:underline hover:underline-offset-4">
                 {label}
               </a>
             </li>
@@ -31,13 +31,13 @@ export function Nav() {
             aria-label="Toggle dark mode"
             className="flex cursor-pointer items-center border-l-2 px-4 hover:bg-muted"
           >
-            <SunIcon className="hidden size-5 dark:block" />
-            <MoonIcon className="size-5 dark:hidden" />
+            <SunIcon className="hidden size-6 dark:block" />
+            <MoonIcon className="size-6 dark:hidden" />
           </button>
 
           <a
             href="#contact"
-            className="hidden items-center border-l-2 bg-primary px-6 text-sm font-medium text-primary-foreground hover:bg-primary/85 sm:flex"
+            className="hidden items-center border-l-2 bg-canvas-action px-6 text-sm font-medium text-canvas-action-foreground hover:bg-canvas-action/85 sm:flex"
           >
             Contact Me
           </a>
@@ -47,6 +47,7 @@ export function Nav() {
             data-menu-toggle
             aria-label="Open menu"
             aria-expanded="false"
+            aria-controls="mobile-menu"
             className="flex cursor-pointer items-center border-l-2 px-4 hover:bg-muted sm:hidden"
           >
             <MenuIcon />
@@ -54,17 +55,21 @@ export function Nav() {
         </div>
       </nav>
 
-      <div data-menu className="hidden border-t-2 sm:hidden">
+      <div
+        id="mobile-menu"
+        data-menu
+        className="absolute inset-x-0 top-full hidden border-t-2 border-t-border bg-background sm:hidden"
+      >
         <ul>
           {links.map(({ href, label }) => (
             <li key={href}>
-              <a href={href} className="block border-b px-4 py-3 text-sm hover:bg-muted">
+              <a href={href} className="block border-b px-4 py-4 text-sm hover:bg-muted font-medium">
                 {label}
               </a>
             </li>
           ))}
           <li>
-            <a href="#contact" className="block bg-primary px-4 py-3 text-sm font-medium text-primary-foreground">
+            <a href="#contact" className="block bg-canvas-action px-4 py-4 text-sm font-medium text-canvas-action-foreground">
               Contact Me
             </a>
           </li>

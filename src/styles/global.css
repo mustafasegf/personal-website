@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "shadcn/tailwind.css";
 @import "@fontsource/ibm-plex-sans/400.css";
+@import "@fontsource/ibm-plex-sans/400-italic.css";
 @import "@fontsource/ibm-plex-sans/500.css";
 @import "@fontsource/ibm-plex-sans/600.css";
 @import "@fontsource/ibm-plex-sans/700.css";
@@ -10,6 +11,11 @@
 @theme inline {
     --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
     --font-heading: var(--font-sans);
+    --leading-display: 1.1;
+    --leading-section-heading: 1.15;
+    --tracking-display: -0.02em;
+    --tracking-section-heading: -0.015em;
+    --tracking-item-heading: -0.01em;
     --color-ring: var(--ring);
     --color-input: var(--input);
     --color-border: var(--border);
@@ -28,6 +34,13 @@
     --color-card: var(--card);
     --color-foreground: var(--foreground);
     --color-background: var(--background);
+    --color-canvas-action-foreground: var(--canvas-action-foreground);
+    --color-canvas-action: var(--canvas-action);
+    --color-canvas-action-border: var(--canvas-action-border);
+    --color-canvas-action-outline-foreground: var(--canvas-action-outline-foreground);
+    --color-canvas-action-outline: var(--canvas-action-outline);
+    --color-chip-selected-foreground: var(--chip-selected-foreground);
+    --color-chip-selected: var(--chip-selected);
 
     /* Figma design palette (Mush): panel/card pastels with dark-mode variants */
     --color-brand-yellow: var(--brand-yellow);
@@ -43,9 +56,9 @@
     --color-brand-salmon: var(--brand-salmon);
 
     /* Hard offset shadows (neobrutalism) */
-    --shadow-brutal-sm: 2px 2px 0px 0px var(--shadow-color);
-    --shadow-brutal: 4px 4px 0px 0px var(--shadow-color);
-    --shadow-brutal-lg: 8px 8px 0px 0px var(--shadow-color);
+    --shadow-brutal-sm: var(--brutal-shadow-sm);
+    --shadow-brutal: var(--brutal-shadow);
+    --shadow-brutal-lg: var(--brutal-shadow-lg);
 
     --radius-sm: calc(var(--radius) * 0.6);
     --radius-md: calc(var(--radius) * 0.8);
@@ -75,8 +88,18 @@
     --border: oklch(0 0 0);
     --input: oklch(0 0 0);
     --ring: #ff795c;
+    --focus-contrast: oklch(0 0 0);
     --radius: 0.25rem;
-    --shadow-color: oklch(0 0 0);
+    --brutal-shadow-sm: 2px 2px 0px 0px oklch(0 0 0);
+    --brutal-shadow: 4px 4px 0px 0px oklch(0 0 0);
+    --brutal-shadow-lg: 8px 8px 0px 0px oklch(0 0 0);
+    --canvas-action: var(--primary);
+    --canvas-action-foreground: var(--primary-foreground);
+    --canvas-action-border: var(--border);
+    --canvas-action-outline: var(--background);
+    --canvas-action-outline-foreground: var(--foreground);
+    --chip-selected: var(--primary);
+    --chip-selected-foreground: var(--primary-foreground);
 
     --brand-yellow: #fedc57;
     --brand-pink: #ffb4ef;
@@ -92,7 +115,7 @@
 }
 
 .dark {
-    /* ink stays black, shadows stay dark, outlines go light, pastels go deep */
+    /* Light structural borders frame dark surfaces while hard shadows stay dark. */
     --background: oklch(0.18 0.005 285);
     --foreground: oklch(0.95 0.005 285);
     --card: oklch(0.22 0.006 285);
@@ -104,35 +127,75 @@
     --secondary: oklch(0.22 0.006 285);
     --secondary-foreground: oklch(0.95 0.005 285);
     --muted: oklch(0.27 0.006 285);
-    --muted-foreground: oklch(0.72 0.01 285);
-    --accent: oklch(0.62 0.16 30);
+    --muted-foreground: oklch(0.78 0.01 285);
+    --accent: oklch(0.56 0.16 33.6);
     --accent-foreground: oklch(0.97 0 0);
     --destructive: oklch(0.704 0.191 22.216);
     --border: oklch(0.85 0.01 285);
     --input: oklch(0.85 0.01 285);
-    --ring: oklch(0.62 0.16 30);
-    --shadow-color: oklch(0.05 0 0);
+    --ring: oklch(0.62 0.16 33.6);
+    --focus-contrast: oklch(0.97 0 0);
+    --brutal-shadow-sm: 2px 2px 0px 0px oklch(0.05 0 0);
+    --brutal-shadow: 4px 4px 0px 0px oklch(0.05 0 0);
+    --brutal-shadow-lg: 8px 8px 0px 0px oklch(0.05 0 0);
+    --canvas-action: oklch(0.97 0 0);
+    --canvas-action-foreground: oklch(0.13 0.005 285);
+    --canvas-action-border: oklch(0.05 0 0);
+    --canvas-action-outline: oklch(0.97 0 0);
+    --canvas-action-outline-foreground: oklch(0.13 0.005 285);
+    --chip-selected: var(--brand-salmon);
+    --chip-selected-foreground: oklch(0.97 0 0);
 
-    --brand-yellow: oklch(0.5 0.11 85);
-    --brand-pink: oklch(0.45 0.13 340);
-    --brand-pink-soft: oklch(0.42 0.08 325);
-    --brand-blue: oklch(0.45 0.09 240);
-    --brand-green: oklch(0.46 0.11 145);
-    --brand-mint: oklch(0.42 0.06 185);
-    --brand-tan: oklch(0.44 0.07 70);
-    --brand-lemon: oklch(0.46 0.1 105);
-    --brand-lavender: oklch(0.42 0.07 295);
-    --brand-rose: oklch(0.46 0.1 15);
-    --brand-salmon: oklch(0.62 0.16 30);
+    --brand-yellow: oklch(0.5 0.1 94.7);
+    --brand-pink: oklch(0.45 0.13 334.4);
+    --brand-pink-soft: oklch(0.42 0.08 321.9);
+    --brand-blue: oklch(0.45 0.085 228.8);
+    --brand-green: oklch(0.46 0.11 137.6);
+    --brand-mint: oklch(0.42 0.06 183.4);
+    --brand-tan: oklch(0.44 0.07 68.6);
+    --brand-lemon: oklch(0.46 0.095 109);
+    --brand-lavender: oklch(0.42 0.07 293.1);
+    --brand-rose: oklch(0.46 0.1 9.2);
+    --brand-salmon: oklch(0.56 0.16 33.6);
 }
 
 /* Neobrutalist press effect: shadow collapses as the element shifts into it */
 @utility btn-brutal {
-  @apply rounded-md border-2 border-border shadow-brutal transition-[translate,box-shadow] duration-150 hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-brutal-sm active:translate-x-1 active:translate-y-1 active:shadow-none;
+  @apply rounded-md border-2 border-border shadow-brutal transition-[translate,box-shadow] duration-150 hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-brutal-sm active:translate-x-2 active:translate-y-2 active:shadow-none;
 }
 
 @utility card-brutal {
   @apply rounded-md border-2 border-border shadow-brutal;
+}
+
+/* Keep compact controls visually small while their non-overlapping hit box stays usable. */
+.touch-target {
+  min-width: 2.5rem;
+  min-height: 1rem;
+}
+
+@media (pointer: coarse) {
+  .touch-target {
+    min-width: 2.75rem;
+    min-height: 2rem;
+  }
+}
+
+@media (hover: hover) {
+  .tag-filter-control:hover .tag-filter-control__visual {
+    background-color: var(--muted);
+    box-shadow: var(--brutal-shadow-sm);
+    translate: 0 -0.125rem;
+  }
+
+  .tag-filter-control[aria-pressed="true"]:hover .tag-filter-control__visual {
+    background-color: color-mix(in oklab, var(--chip-selected) 85%, transparent);
+  }
+}
+
+.tag-filter-control[aria-pressed="true"] .tag-filter-control__visual {
+  background-color: var(--chip-selected);
+  color: var(--chip-selected-foreground);
 }
 
 @layer base {
@@ -141,6 +204,7 @@
   }
   html {
     @apply font-sans;
+    font-synthesis: none;
     color-scheme: light;
   }
   html.dark {
@@ -148,6 +212,23 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+
+  a {
+    text-decoration-thickness: from-font;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: auto;
+  }
+
+  button {
+    user-select: none;
+  }
+
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px var(--focus-contrast), var(--tw-shadow);
   }
 
   @media (prefers-reduced-motion: reduce) {
