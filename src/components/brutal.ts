@@ -7,6 +7,8 @@ export const brutalButton = cva(
       tone: {
         solid: "bg-primary text-primary-foreground",
         outline: "bg-background text-foreground",
+        canvas: "border-canvas-action-border! bg-canvas-action text-canvas-action-foreground",
+        canvasOutline: "border-canvas-action-border! bg-canvas-action-outline text-canvas-action-outline-foreground",
       },
       size: {
         md: "h-12 px-6",

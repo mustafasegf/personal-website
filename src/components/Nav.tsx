@@ -37,7 +37,7 @@ export function Nav() {
 
           <a
             href="#contact"
-            className="hidden items-center border-l-2 bg-primary px-6 text-sm font-medium text-primary-foreground hover:bg-primary/85 sm:flex"
+            className="hidden items-center border-l-2 bg-canvas-action px-6 text-sm font-medium text-canvas-action-foreground hover:bg-canvas-action/85 sm:flex"
           >
             Contact Me
           </a>
@@ -64,7 +64,7 @@ export function Nav() {
             </li>
           ))}
           <li>
-            <a href="#contact" className="block bg-primary px-4 py-3 text-sm font-medium text-primary-foreground">
+            <a href="#contact" className="block bg-canvas-action px-4 py-3 text-sm font-medium text-canvas-action-foreground">
               Contact Me
             </a>
           </li>

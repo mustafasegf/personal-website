@@ -15,11 +15,11 @@ export function Hero({ illustration }: { illustration: Img }) {
         </p>
 
         <div className="mt-4 flex flex-col gap-4 sm:flex-row">
-          <a href="#projects" className={brutalButton({ className: "px-8" })}>
+          <a href="#projects" className={brutalButton({ tone: "canvas", className: "px-8" })}>
             Learn More
             <ArrowDownIcon />
           </a>
-          <a href="#contact" className={brutalButton({ tone: "outline", className: "px-8" })}>
+          <a href="#contact" className={brutalButton({ tone: "canvasOutline", className: "px-8" })}>
             Contact Me
             <MailIcon />
           </a>

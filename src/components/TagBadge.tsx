@@ -15,7 +15,7 @@ export function TagFilterChip({ tag }: { tag: string }) {
   return (
     <Badge
       variant="outline"
-      className={`${tagClass} cursor-pointer transition-[background-color,translate] duration-150 hover:-translate-y-0.5 hover:bg-muted aria-pressed:bg-primary aria-pressed:text-primary-foreground aria-pressed:hover:bg-primary/85`}
+      className={`${tagClass} cursor-pointer transition-[background-color,translate,box-shadow] duration-150 hover:-translate-y-0.5 hover:bg-muted hover:shadow-brutal-sm aria-pressed:bg-chip-selected aria-pressed:text-chip-selected-foreground aria-pressed:hover:bg-chip-selected/85`}
       render={<button type="button" data-tag={tag} aria-pressed={false} />}
     >
       {tag}
