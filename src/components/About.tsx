@@ -1,4 +1,5 @@
-const link = "font-semibold underline underline-offset-4";
+const link = "font-semibold underline decoration-2 underline-offset-4 hover:decoration-brand-salmon";
+
 
 export function About() {
   return (

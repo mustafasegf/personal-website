@@ -58,7 +58,7 @@ export function Nav() {
       <div
         id="mobile-menu"
         data-menu
-        className="absolute inset-x-0 top-full hidden border-t-2 border-b-2 border-t-border border-b-background bg-background sm:hidden"
+        className="absolute inset-x-0 top-full hidden border-t-2 border-t-border bg-background sm:hidden"
       >
         <ul>
           {links.map(({ href, label }) => (
