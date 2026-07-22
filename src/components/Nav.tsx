@@ -8,7 +8,7 @@ const links = [
 
 export function Nav() {
   return (
-    <header className="sticky top-0 z-50 border-b-2 bg-background">
+    <header className="sticky top-0 z-50 isolate border-b-2 bg-background">
       <nav className="flex items-stretch">
         <a href="#top" className="flex items-center border-r-2 px-4 py-4 text-sm font-bold tracking-wide uppercase sm:px-6">
           Mustafa
@@ -47,6 +47,7 @@ export function Nav() {
             data-menu-toggle
             aria-label="Open menu"
             aria-expanded="false"
+            aria-controls="mobile-menu"
             className="flex cursor-pointer items-center border-l-2 px-4 hover:bg-muted sm:hidden"
           >
             <MenuIcon />
@@ -54,7 +55,11 @@ export function Nav() {
         </div>
       </nav>
 
-      <div data-menu className="hidden border-t-2 sm:hidden">
+      <div
+        id="mobile-menu"
+        data-menu
+        className="absolute inset-x-0 top-full hidden border-b-2 bg-background shadow-brutal sm:hidden"
+      >
         <ul>
           {links.map(({ href, label }) => (
             <li key={href}>

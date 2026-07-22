@@ -58,7 +58,15 @@ export function Hero({ illustration }: { illustration: Img }) {
             className: "h-11 px-5",
           })}
         >
-          <span data-shade-label>Add Shade</span> 🕶
+          <span className="inline-grid">
+            <span data-shade-label className="col-start-1 row-start-1">
+              Add Shade
+            </span>
+            <span aria-hidden="true" className="invisible col-start-1 row-start-1">
+              Remove Shade
+            </span>
+          </span>{" "}
+          🕶
         </button>
       </div>
     </section>

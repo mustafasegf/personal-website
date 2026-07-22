@@ -163,6 +163,36 @@
   @apply rounded-md border-2 border-border shadow-brutal;
 }
 
+/* Keep compact controls visually small while their non-overlapping hit box stays usable. */
+.touch-target {
+  min-width: 2.5rem;
+  min-height: 2.5rem;
+}
+
+@media (pointer: coarse) {
+  .touch-target {
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+  }
+}
+
+@media (hover: hover) {
+  .tag-filter-control:hover .tag-filter-control__visual {
+    background-color: var(--muted);
+    box-shadow: var(--brutal-shadow-sm);
+    translate: 0 -0.125rem;
+  }
+
+  .tag-filter-control[aria-pressed="true"]:hover .tag-filter-control__visual {
+    background-color: color-mix(in oklab, var(--chip-selected) 85%, transparent);
+  }
+}
+
+.tag-filter-control[aria-pressed="true"] .tag-filter-control__visual {
+  background-color: var(--chip-selected);
+  color: var(--chip-selected-foreground);
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

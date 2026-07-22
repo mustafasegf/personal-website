@@ -20,7 +20,7 @@ function ProjectCard({ project }: { project: Project }) {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`Open ${project.title}`}
-            className={brutalButton({ size: "icon" })}
+            className={brutalButton({ size: "icon-lg" })}
           >
             <ExternalLinkIcon />
           </a>
@@ -30,7 +30,7 @@ function ProjectCard({ project }: { project: Project }) {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`${project.title} on GitHub`}
-          className={brutalButton({ size: "icon" })}
+          className={brutalButton({ size: "icon-lg" })}
         >
           <GitHubIcon />
         </a>
@@ -43,13 +43,21 @@ export function ProjectGrid() {
   return (
     <section className="border-b-2 px-5 py-12 sm:px-10">
       <h2 className="pb-2 text-center">Other interesting projects</h2>
-      <p className="pb-6 text-center text-sm text-muted-foreground">Click a tag to filter, click it again to clear it.</p>
-      <p data-filter-status role="status" aria-live="polite" className="hidden pb-6 text-center text-sm tabular-nums">
-        <span data-filter-count />
-        <button type="button" data-filter-clear className="ml-2 cursor-pointer font-medium underline underline-offset-4">
-          Clear filter
-        </button>
-      </p>
+      <div className="flex h-11 items-center justify-center text-center text-sm">
+        <p data-filter-helper className="text-muted-foreground">
+          Click a tag to filter, click it again to clear it.
+        </p>
+        <p data-filter-status role="status" aria-live="polite" className="hidden items-center justify-center gap-2 tabular-nums">
+          <span data-filter-count />
+          <button
+            type="button"
+            data-filter-clear
+            className="touch-target inline-flex cursor-pointer items-center justify-center font-medium underline underline-offset-4"
+          >
+            Clear filter
+          </button>
+        </p>
+      </div>
       <div data-project-grid className="mx-auto grid max-w-6xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {projects.map((p) => (
           <ProjectCard key={p.title} project={p} />

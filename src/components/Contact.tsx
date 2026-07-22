@@ -10,9 +10,19 @@ const socials = [
 
 function CopyEmailButton() {
   return (
-    <button type="button" data-copy-email className={brutalButton({ tone: "outline" })}>
+    <button type="button" data-copy-email className={brutalButton({ tone: "outline", className: "max-w-full" })}>
       <CopyIcon />
-      <span data-copy-label>Copy address</span>
+      <span className="inline-grid min-w-0">
+        <span data-copy-label className="col-start-1 row-start-1 truncate">
+          Copy address
+        </span>
+        <span aria-hidden="true" className="invisible col-start-1 row-start-1">
+          Copied!
+        </span>
+        <span aria-hidden="true" className="invisible col-start-1 row-start-1 truncate">
+          {site.email}
+        </span>
+      </span>
     </button>
   );
 }

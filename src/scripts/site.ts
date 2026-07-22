@@ -20,10 +20,22 @@ function menu() {
   const setOpen = (open: boolean) => {
     panel.classList.toggle("hidden", !open);
     toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
   };
+  const isOpen = () => toggle.getAttribute("aria-expanded") === "true";
+
   toggle.addEventListener("click", () => setOpen(panel.classList.contains("hidden")));
   panel.addEventListener("click", (e) => {
     if ((e.target as Element).closest("a")) setOpen(false);
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "Escape" || !isOpen()) return;
+    setOpen(false);
+    toggle.focus();
+  });
+  document.addEventListener("pointerdown", (e) => {
+    const target = e.target as Node;
+    if (isOpen() && !panel.contains(target) && !toggle.contains(target)) setOpen(false);
   });
 }
 
@@ -57,6 +69,7 @@ function filter() {
 
   const cards = all("[data-tags]");
   const chips = all<HTMLButtonElement>("[data-tag]");
+  const helper = one("[data-filter-helper]")!;
   const status = one("[data-filter-status]")!;
   const count = one("[data-filter-count]")!;
   const selected = new Set<string>();
@@ -71,7 +84,10 @@ function filter() {
     for (const chip of chips) {
       chip.setAttribute("aria-pressed", String(selected.has(chip.dataset.tag!)));
     }
-    status.classList.toggle("hidden", selected.size === 0);
+    const hasSelection = selected.size > 0;
+    helper.classList.toggle("hidden", hasSelection);
+    status.classList.toggle("hidden", !hasSelection);
+    status.classList.toggle("flex", hasSelection);
     count.textContent = `Showing ${shown} of ${cards.length} projects for: ${[...selected].join(", ")}`;
   };
 

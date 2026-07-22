@@ -13,12 +13,18 @@ export function TagBadge({ tag }: { tag: string }) {
 
 export function TagFilterChip({ tag }: { tag: string }) {
   return (
-    <Badge
-      variant="outline"
-      className={`${tagClass} cursor-pointer transition-[background-color,translate,box-shadow] duration-150 hover:-translate-y-0.5 hover:bg-muted hover:shadow-brutal-sm aria-pressed:bg-chip-selected aria-pressed:text-chip-selected-foreground aria-pressed:hover:bg-chip-selected/85`}
-      render={<button type="button" data-tag={tag} aria-pressed={false} />}
+    <button
+      type="button"
+      data-tag={tag}
+      aria-pressed={false}
+      className="tag-filter-control touch-target inline-flex cursor-pointer items-center justify-center rounded-full"
     >
-      {tag}
-    </Badge>
+      <Badge
+        variant="outline"
+        className={`${tagClass} tag-filter-control__visual pointer-events-none transition-[background-color,translate,box-shadow] duration-150`}
+      >
+        {tag}
+      </Badge>
+    </button>
   );
 }
