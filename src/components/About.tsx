@@ -14,7 +14,7 @@ export function About() {
         <p>
           Right now I'm a platform engineer at{" "}
           <a href="https://aiand.com/" target="_blank" rel="noopener noreferrer" className={link}>
-            AI&
+            ai&
           </a>
           , keeping on-prem GPU servers reliable with end-to-end telemetry, Kubernetes, and
           infrastructure as code. You can also checkout my latest project, the{" "}

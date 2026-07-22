@@ -198,7 +198,7 @@ export type Experience = {
 export const experience: Experience[] = [
   {
     role: "Platform Engineer",
-    company: "AI&",
+    company: "ai&",
     range: "Apr 2026 - Present",
     href: "https://aiand.com/",
     bullets: [
