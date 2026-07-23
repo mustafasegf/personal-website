@@ -104,6 +104,27 @@ function filter() {
   });
 }
 
+function friendsGrid() {
+  const list = one("[data-friends]");
+  if (!list) return;
+  const fillers = all("[data-friend-filler]");
+
+  const apply = () => {
+    for (const f of fillers) f.classList.add("hidden");
+    const tops = all("[data-friend]").map((el) => el.offsetTop);
+    const first = tops[0];
+    const last = tops[tops.length - 1];
+    if (first === last) return; // single row needs no fixing
+    const cols = tops.filter((t) => t === first).length;
+    const orphans = tops.filter((t) => t === last).length;
+    // 1-2 orphans center, except narrow (2-3 column) layouts which always stay aligned
+    if (orphans > 2 || cols <= 3) for (const f of fillers.slice(0, cols - orphans)) f.classList.remove("hidden");
+  };
+
+  apply();
+  new ResizeObserver(apply).observe(list);
+}
+
 function copyEmail() {
   const btn = one("[data-copy-email]");
   const label = one("[data-copy-label]");
@@ -139,5 +160,6 @@ menu();
 anchors();
 shade();
 filter();
+friendsGrid();
 copyEmail();
 scrollTop();

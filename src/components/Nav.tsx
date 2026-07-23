@@ -16,7 +16,7 @@ export function Nav() {
           Mustafa
         </a>
 
-        <ul className="hidden items-stretch sm:flex">
+        <ul className="hidden items-stretch md:flex">
           {links.map(({ href, label }) => (
             <li key={href} className="flex">
               <a href={href} className="flex items-center px-6 text-sm hover:underline hover:underline-offset-4">
@@ -39,7 +39,7 @@ export function Nav() {
 
           <a
             href="#contact"
-            className="hidden items-center border-l-2 bg-canvas-action px-6 text-sm font-medium text-canvas-action-foreground hover:bg-canvas-action/85 sm:flex"
+            className="hidden items-center border-l-2 bg-canvas-action px-6 text-sm font-medium text-canvas-action-foreground hover:bg-canvas-action/85 md:flex"
           >
             Contact Me
           </a>
@@ -50,7 +50,7 @@ export function Nav() {
             aria-label="Open menu"
             aria-expanded="false"
             aria-controls="mobile-menu"
-            className="flex cursor-pointer items-center border-l-2 px-4 hover:bg-muted sm:hidden"
+            className="flex cursor-pointer items-center border-l-2 px-4 hover:bg-muted md:hidden"
           >
             <MenuIcon />
           </button>
@@ -60,7 +60,7 @@ export function Nav() {
       <div
         id="mobile-menu"
         data-menu
-        className="absolute inset-x-0 top-full hidden border-t-2 border-t-border bg-background sm:hidden"
+        className="absolute inset-x-0 top-full hidden border-t-2 border-t-border bg-background md:hidden"
       >
         <ul>
           {links.map(({ href, label }) => (

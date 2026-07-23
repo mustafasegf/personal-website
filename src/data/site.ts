@@ -214,9 +214,21 @@ export type Friend = {
 };
 
 export const friends: Friend[] = [
-  { name: "Stefanus Ndaru", href: "https://stndar.dev" },
-  { name: "Adrian Ardizza", href: "https://ardizza.xyz" },
-  { name: "Andre Pramaditya", href: "https://drepram.com" },
+  { name: "Ndaru", href: "https://stndar.dev" },
+  { name: "Adrian", href: "https://ardizza.xyz" },
+  { name: "Sam", href: "https://kreio.tech" },
+  { name: "Anski", href: "https://ansqee.notion.site/Hi-I-m-Hasiana-8423992aec4447b58c855813250669fe" },
+  { name: "Mario", href: "https://marioserano.com" },
+  { name: "Andre", href: "https://drepram.com" },
+  { name: "Dika", href: "https://hamardikan.com" },
+  { name: "Ikta", href: "https://ikta.dev" },
+  { name: "Daffa", href: "https://hirumi.dev" },
+  { name: "Defha", href: "https://defha.me" },
+  { name: "Vito", href: "https://secona.dev" },
+  { name: "Didiet", href: "https://www.kodingajadulu.com" },
+  { name: "Aria", href: "https://ghora.net" },
+  { name: "Rin", href: "https://rin.rocks" },
+  { name: "Dhimas", href: "https://www.halodhimas.com" },
 ];
 
 export type Experience = {
